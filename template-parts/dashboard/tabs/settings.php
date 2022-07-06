@@ -37,7 +37,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-phone"><?=__( 'Номер телефону', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="tel" name="phone" placeholder="<?=__( 'Введіть ваш номер телефону', 'ce-crypto' ); ?>" class="input__input" id="profile-phone">
+                            <input type="tel" name="phone" placeholder="<?=__( 'Введіть ваш номер телефону', 'ce-crypto' ); ?>" value="<?=$profile['phone']; ?>" class="input__input" id="profile-phone">
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ $profile = ccpt_get_current_user_profile();
                         <label for="register-twitter" class="input__label"><?=__( 'Twitter Username', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="twitter" placeholder="@" class="input__input" id="register-twitter">
+                            <input type="text" name="twitter" placeholder="@" value="<?=$profile['twitter']; ?>" class="input__input" id="register-twitter">
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ $profile = ccpt_get_current_user_profile();
                         <label for="register-twitter" class="input__label"><?=__( 'Telegram Username', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="telegram" placeholder="@" class="input__input" id="register-telegram">
+                            <input type="text" name="telegram" placeholder="@" value="<?=$profile['telegram']; ?>" class="input__input" id="register-telegram">
                         </div>
                     </div>
                 </div>
