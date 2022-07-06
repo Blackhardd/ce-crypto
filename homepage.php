@@ -51,7 +51,7 @@ get_header();
                     </ul>
 
                     <div class="recent-articles__footer">
-                        <a href="<?=get_post_type_archive_link( 'article' ); ?>" class="arrow-button arrow-button--right">
+                        <a href="<?=get_permalink( get_theme_mod( 'courses_page' ) ); ?>" class="arrow-button arrow-button--right">
                             <div class="arrow-button__title"><?=__( 'Всі статті', 'ce-crypto' ); ?></div>
                             
                             <div class="arrow-button__icon">
