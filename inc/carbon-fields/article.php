@@ -9,4 +9,5 @@ Container::make( 'post_meta', __( 'Налаштування статті', 'ce-c
     ->add_fields( array(
         Field::make( 'text', 'reading_time', __( 'Час читання (хв.)', 'ce-crypto' ) )
             ->set_attribute( 'type', 'number' )
+            ->set_default_value( 5 )
     ) );
