@@ -58,12 +58,12 @@ do_action( 'ccpt_before_single_article' );
 
                         <div class="article__views meta meta--views">
                             <div class="meta__icon"><?=ccpt_get_icon( 'meta/eye' ); ?></div>
-                            <div class="meta__value">220</div>
+                            <div class="meta__value"><?=ccpt_get_views(); ?></div>
                         </div>
 
                         <div class="article__likes meta meta--likes">
                             <div class="meta__icon"><?=ccpt_get_icon( 'meta/like' ); ?></div>
-                            <div class="meta__value">3</div>
+                            <div class="meta__value"><?=ccpt_get_likes(); ?></div>
                         </div>
                     </div>
 

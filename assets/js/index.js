@@ -23,6 +23,9 @@ jQuery(document).ready(function($){
         this.initTermsExpanding()
         this.initTermsInfiniteScroll()
         this.initTermsSearch()
+
+        // Article
+        this.initArticleLikes()
     }
 
 
@@ -526,6 +529,32 @@ jQuery(document).ready(function($){
         if(!$('.search-form--terms').length) return
 
 
+    }
+
+
+    // Articles
+
+    crypto.initArticleLikes = function(){
+        if(!$('.meta--likes').length) return
+
+        const $icon = $('.meta--likes .meta__icon')
+        const $value = $('.meta--likes .meta__value')
+
+        $icon.on('click', function(){
+            $.ajax({
+                method: 'POST',
+                url: ccpt_data.ajax_url,
+                data: {
+                    'action': 'like_article',
+                    'post_id': ccpt_data.post_id
+                },
+                success: function(res){
+                    if(res.status === 'success'){
+                        $value.text(parseInt($value.text()) + 1)
+                    }
+                }
+            })
+        })
     }
 
 

@@ -612,6 +612,15 @@ fieldset {
 }
 
 
+.meta--likes .meta__icon {
+    cursor: pointer;
+}
+
+.meta--likes .meta__icon > svg {
+    pointer-events: none;
+}
+
+
 /* Home Intro */
 
 .intro {

@@ -113,7 +113,8 @@ function ccpt_enqueue_scripts(){
     // Localize scripts
 
     wp_localize_script( 'front', 'ccpt_data', array(
-        'ajax_url' => admin_url( 'admin-ajax.php' )
+        'ajax_url'  => admin_url( 'admin-ajax.php' ),
+        'post_id'   => is_singular() ? get_the_ID() : false
     ) );
 
     wp_localize_script( 'forms', 'ccpt_forms_data', array(
