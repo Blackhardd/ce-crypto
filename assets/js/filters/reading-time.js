@@ -45,6 +45,10 @@ jQuery(document).ready(function($){
             params.append('time', '[' + from + ', ' + to + ']')
         }
 
+        if(params.has('page')){
+            params.delete('page')
+        }
+
         if(media_query.matches){
             $(window).on('sidebarclosed', function(){
                 window.location.search = params.toString()
