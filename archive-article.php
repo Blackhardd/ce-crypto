@@ -42,7 +42,7 @@ get_header();
                                 <?php foreach( $recent as $article ) : ?>
                                     <li class="recent-article-item">
                                         <div class="recent-article-item__header">
-                                            <div class="recent-article-item__category">криптовалюта</div>
+                                            <div class="recent-article-item__category"><?=ccpt_get_article_category( $article->ID )->name; ?></div>
                                             <div class="recent-article-item__date"><?=get_the_date( 'd.m.Y', $article->ID ); ?></div>
                                         </div>
 
@@ -107,7 +107,7 @@ get_header();
                                             <?php foreach( $recent_articles as $article ) : ?>
                                                 <li class="recent-article-item">
                                                     <div class="recent-article-item__header">
-                                                        <div class="recent-article-item__category">криптовалюта</div>
+                                                        <div class="recent-article-item__category"><?=ccpt_get_article_category( $article->ID )->name; ?></div>
                                                         <div class="recent-article-item__date"><?=get_the_date( 'd.m.Y', $article->ID ); ?></div>
                                                     </div>
 
