@@ -13,7 +13,7 @@ $query = ccpt_get_articles_category_query();
     <div class="container">
         <div class="page-header page-header--course">
             <div class="breadcrumbs breadcrumbs--course page-header__breadcrumbs">
-                <a href="<?=get_post_type_archive_link( 'article' ); ?>" class="breadcrumbs__link breadcrumbs__link--home"><?=__( 'Статті', 'ce-crypto' ); ?></a><h1 class="breadcrmubs__current"><?php single_term_title(); ?></h1>
+                <a href="<?=get_permalink( get_theme_mod( 'courses_page' ) ); ?>" class="breadcrumbs__link breadcrumbs__link--home"><?=__( 'Статті', 'ce-crypto' ); ?></a><h1 class="breadcrmubs__current"><?php single_term_title(); ?></h1>
             </div>
 
             <div class="page-header__actions">

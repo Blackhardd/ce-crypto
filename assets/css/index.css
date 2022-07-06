@@ -524,11 +524,16 @@ fieldset {
 }
 
 
-.page-header--articles-archive {
+.page-header--articles-archive .page-header__actions {
+    display: none;
+}
+
+
+.page-header--courses {
     margin-bottom: 30px;
 }
 
-.page-header--articles-archive .page-header__actions {
+.page-header--courses .page-header__actions {
     margin-top: 36px;
 }
 
@@ -1260,22 +1265,22 @@ fieldset {
 
 
 
-/* Articles Hero */
+/* Courses Hero */
 
-.articles-hero {
+.courses-hero {
     display: flex;
     margin-bottom: 80px;
 }
 
-.articles-hero__pinned {
+.courses-hero__pinned {
     flex-shrink: 0;
 }
 
-.articles-hero__pinned > .article-card:not(:last-child) {
+.courses-hero__pinned > .article-card:not(:last-child) {
     margin-bottom: 20px;
 }
 
-.articles-hero__recent {
+.courses-hero__recent {
     margin-left: 20px;
 }
 
@@ -2860,7 +2865,7 @@ a.tag:not(.tag--active):hover {
         grid-gap: 103px;
     }
 
-    .articles-hero__pinned {
+    .courses-hero__pinned {
         width: 50%;
     }
 
@@ -2977,8 +2982,13 @@ a.tag:not(.tag--active):hover {
     }
 
     
-    .page-header--articles-archive {
+    .page-header--courses {
         margin-bottom: 26px;
+    }
+
+
+    .page-header--articles-archive .page-header__actions {
+        display: flex;
     }
 
 
@@ -3187,11 +3197,15 @@ a.tag:not(.tag--active):hover {
     }
 
 
-    .articles-hero {
+    .courses-hero {
         flex-direction: column;
     }
 
-    .articles-hero__recent {
+    .courses-hero__pinned {
+        width: 100%;
+    }
+
+    .courses-hero__recent {
         margin-top: 20px;
         margin-left: unset;
     }
@@ -3199,11 +3213,6 @@ a.tag:not(.tag--active):hover {
     
     .recent-articles__footer {
         margin-top: 40px;
-    }
-
-
-    .articles-hero__pinned {
-        width: 100%;
     }
 
 
@@ -3467,17 +3476,17 @@ a.tag:not(.tag--active):hover {
     }
 
 
-    .page-header--articles-archive {
+    .page-header--courses {
         margin-bottom: 20px;
     }
 
-    .page-header--articles-archive .page-header__actions {
+    .page-header--courses .page-header__actions {
         align-items: flex-start;
         flex-direction: column;
         margin-top: 45px;
     }
 
-    .page-header--articles-archive .page-header__actions .subtitle {
+    .page-header--courses .page-header__actions .subtitle {
         margin-bottom: 26px;
     }
 

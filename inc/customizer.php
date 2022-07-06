@@ -12,6 +12,7 @@ function ccpt_customize_register( $customizer ){
 
     $customizer->add_setting( 'profile_page', array( 'default' => '' ) );
     $customizer->add_setting( 'login_page', array( 'default' => '' ) );
+    $customizer->add_setting( 'courses_page', array( 'default' => '' ) );
 
     $customizer->add_control( 'login_page', array(
         'id'            => 'login_page_control',
@@ -23,6 +24,13 @@ function ccpt_customize_register( $customizer ){
     $customizer->add_control( 'profile_page', array(
         'id'            => 'profile_page_control',
         'label'         => __( 'Профіль', 'ce-crypto' ),
+        'section'       => 'service_pages_section',
+        'type'          => 'dropdown-pages'
+    ) );
+
+    $customizer->add_control( 'courses_page', array(
+        'id'            => 'courses_control',
+        'label'         => __( 'Курси', 'ce-crypto' ),
         'section'       => 'service_pages_section',
         'type'          => 'dropdown-pages'
     ) );
