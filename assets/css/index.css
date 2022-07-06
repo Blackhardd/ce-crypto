@@ -1519,9 +1519,9 @@ fieldset {
     margin-right: 20px;
 }
 
-.article__meta .meta:not(:first-child) {
-    padding-left: 20px;
-    border-left: 1px solid #C4C4C4;
+.article__meta .meta:not(:last-child) {
+    padding-right: 20px;
+    border-right: 1px solid #C4C4C4;
 }
 
 .article__content a {
@@ -3243,6 +3243,16 @@ a.tag:not(.tag--active):hover {
     .articles-category__recent {
         padding-top: 20px;
         padding-left: unset;
+    }
+
+
+    .article__meta {
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .article__meta .meta {
+        margin-bottom: 20px;
     }
 
 

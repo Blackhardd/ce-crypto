@@ -61,7 +61,7 @@ do_action( 'ccpt_before_single_article' );
                             <div class="meta__value">220</div>
                         </div>
 
-                        <div class="article__lines meta meta--likes">
+                        <div class="article__likes meta meta--likes">
                             <div class="meta__icon"><?=ccpt_get_icon( 'meta/like' ); ?></div>
                             <div class="meta__value">3</div>
                         </div>
