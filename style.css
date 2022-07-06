@@ -1,0 +1,18 @@
+/*
+ Theme Name: CeCrypto
+ Version: 1.0.0
+ Text Domain: ce-crypto
+*/
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --c-primary: #F5632C;
+    --c-secondary: #FAEFDE;
+    --c-positive: #34A853;
+    --c-negative: #F31B1B;
+}
