@@ -155,7 +155,7 @@ function ccpt_customize_register( $customizer ){
     ) );
 
     $customizer->add_section( 'force_register_modal_section', array(
-        'title'         => __( 'Призив зареєструватися', 'ce-crypto' ),
+        'title'         => __( 'Призов зареєструватися', 'ce-crypto' ),
         'panel'         => 'modals_panel'
     ) );
 
