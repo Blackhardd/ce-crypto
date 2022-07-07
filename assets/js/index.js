@@ -288,6 +288,12 @@ jQuery(document).ready(function($){
             }
         })
 
+        $search.on('submit', '.header-search__form', function(e){
+            e.preventDefault()
+
+            return false
+        })
+
         function showSearchResults(){
             if(!$('.header-search-results').length){
                 $('<div class="header-search-results">' + results_html + '</div>').appendTo('body')
