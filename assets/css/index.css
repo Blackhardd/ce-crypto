@@ -1166,6 +1166,10 @@ fieldset {
 
 /* Course */
 
+.course:not(:first-child) {
+    margin-top: 40px;
+}
+
 .course__header {
     display: flex;
     align-items: center;
@@ -1407,6 +1411,10 @@ fieldset {
 
 
 /* Article Category */
+
+.articles-category:not(:first-child) {
+    margin-top: 40px;
+}
 
 .articles-category__header {
     display: flex;

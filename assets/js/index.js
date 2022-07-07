@@ -591,20 +591,27 @@ jQuery(document).ready(function($){
         const $icon = $('.meta--likes .meta__icon')
         const $value = $('.meta--likes .meta__value')
 
+        let can_be_liked = true
+
         $icon.on('click', function(){
-            $.ajax({
-                method: 'POST',
-                url: ccpt_data.ajax_url,
-                data: {
-                    'action': 'like_article',
-                    'post_id': ccpt_data.post_id
-                },
-                success: function(res){
-                    if(res.status === 'success'){
-                        $value.text(parseInt($value.text()) + 1)
+            if(can_be_liked){
+                can_be_liked = false
+                $value.text(parseInt($value.text()) + 1)
+
+                $.ajax({
+                    method: 'POST',
+                    url: ccpt_data.ajax_url,
+                    data: {
+                        'action': 'like_article',
+                        'post_id': ccpt_data.post_id
+                    },
+                    success: function(res){
+                        if(res.status !== 'success'){
+                            can_be_liked = true
+                        }
                     }
-                }
-            })
+                })
+            }
         })
     }
 

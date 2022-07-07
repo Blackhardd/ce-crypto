@@ -129,17 +129,21 @@ do_action( 'ccpt_before_single_article' );
                         if( empty( $previous_post ) ) :
                             ccpt_maybe_add_article_to_readed( get_the_ID() );
 
-                            $link = get_permalink( ccpt_get_article_category_test( get_the_ID() ) );
+                            $test_id = ccpt_get_article_category_test( get_the_ID() );
                             $is_test_available = ccpt_get_user_course_data( 0, ccpt_get_article_category( get_the_ID() )->term_id )['progress'] === 100;
                             
-                            ?>
-
-                            <a <?=$is_test_available ? "href='{$link}'" : '' ?> class="btn btn--secondary <?=!$is_test_available ? 'btn--disabled' : ''; ?>"><?=__( 'Пройти тестування', 'ce-crypto' ); ?></a>
-                        <?php else :
-                            $link = is_user_logged_in() ? add_query_arg( 'prev_article', get_the_ID(), get_permalink( $previous_post ) ) : '#modal-force-register';
+                            if( $test_id ) :
+                                $link = get_permalink( $test_id );
                             
-                            ?>
+                        ?>
+                            <a <?=$is_test_available ? "href='{$link}'" : '' ?> class="btn btn--secondary <?=!$is_test_available ? 'btn--disabled' : ''; ?>"><?=__( 'Пройти тестування', 'ce-crypto' ); ?></a>
+                        <?php
 
+                            endif;
+                        else :
+                            $link = is_user_logged_in() ? add_query_arg( 'prev_article', get_the_ID(), get_permalink( $previous_post ) ) : '#modal-force-register';
+                        
+                        ?>
                             <a href="<?=$link; ?>" class="arrow-button arrow-button--right">
                                 <div class="arrow-button__title"><?=__( 'Наступна стаття', 'ce-crypto' ); ?></div>
                                 

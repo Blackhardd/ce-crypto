@@ -74,16 +74,15 @@ get_header();
                     <?php endif; ?>
                 </div>
             
-                <?php if( $categories = ccpt_get_article_categories() ) : ?>
-                    <?php foreach( $categories as $category ) : ?>
-                        <?php
+                <?php
 
-
+                if( $categories = ccpt_get_article_categories( true, false ) ) :
+                    foreach( $categories as $category ) :
                         $course_user_data = ccpt_get_user_course_data( 0, $category->term_id );
                         $most_recent_article = ccpt_get_category_most_recent_article( $category->term_id );
                         $recent_articles = ccpt_get_category_recent_articles( $category->term_id, 2, $most_recent_article->ID );
 
-                        ?>
+                ?>
 
                         <div class="articles-category <?="articles-category--{$course_user_data['status']}"; ?>">
                             <div class="articles-category__header">
@@ -139,8 +138,12 @@ get_header();
                                 <?php endif; ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                <?php
+                
+                    endforeach;
+                endif;
+                
+                ?>
             </div>
 
             <aside class="sidebar sidebar--articles page-content__sidebar">
