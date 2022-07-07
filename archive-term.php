@@ -39,10 +39,18 @@ get_header();
                         ?>
                     <?php endwhile; ?>
                 </div>
+
+                <input type="hidden" name="current_char" value="<?=$current_char; ?>">
             <?php else : ?>
-                <div class="nothing-found nothing-found--terms">
-                    <div class="nothing-found__title"><?=sprintf( __( 'За запитом «%s» нічого не знайдено', 'ce-crypto' ), $_GET['search'] ); ?></div>
-                </div>
+                <?php if( isset( $_GET['letter'] ) ) : ?>
+                    <div class="nothing-found nothing-found--terms">
+                        <div class="nothing-found__title"><?=sprintf( __( 'За літерою «%s» термінів не знайдено', 'ce-crypto' ), ccpt_get_alphabet_filter_items( true )[$_GET['letter']] ); ?></div>
+                    </div>
+                <?php else : ?>
+                    <div class="nothing-found nothing-found--terms">
+                        <div class="nothing-found__title"><?=sprintf( __( 'За запитом «%s» термінів не знайдено', 'ce-crypto' ), $_GET['search'] ); ?></div>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
 
@@ -64,8 +72,6 @@ get_header();
             </div>
         </aside>
     </div>
-    
-    <input type="hidden" name="current_char" value="<?=$current_char; ?>">
 </div>
 
 <?php

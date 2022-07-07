@@ -423,6 +423,36 @@ fieldset {
 }
 
 
+.input--search {
+    position: relative;
+}
+
+.input--search .input__suggestions {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 10px);
+    left: 0;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    border-radius: 5px;
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .3s ease, opacity .3s ease;
+}
+
+.input--search.input--suggested .input__suggestions {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.input--search .input__suggestions > a {
+    display: block;
+}
+
+
 .input--valid .input__input {
     border-color: var(--c-positive);
 }

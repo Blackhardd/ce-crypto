@@ -7,8 +7,10 @@
         <form class="search-form search-form--terms">
             <div class="input input--default input--search">
                 <div class="input__wrap">
-                    <input type="search" name="search" <?=isset( $_GET['search'] ) ? "value='{$_GET['search']}'" : ''; ?> placeholder="<?=__( 'Термін', 'ce-crypto' ); ?>" class="input__input">
+                    <input type="search" name="search" <?=isset( $_GET['search'] ) ? "value='{$_GET['search']}'" : ''; ?> placeholder="<?=__( 'Термін', 'ce-crypto' ); ?>" class="input__input" data-search="term">
                 </div>
+
+                <div class="input__suggestions"></div>
             </div>
             
             <button type="submit" class="btn btn--primary search-form__submit"><?=__( 'Пошук', 'ce-crypto' ); ?></button>

@@ -532,9 +532,54 @@ jQuery(document).ready(function($){
 
 
     crypto.initTermsSearch = function(){
-        if(!$('.search-form--terms').length) return
+        if(!$('.search-form').length) return
 
+        const _this = this
 
+        const $search = $('.search-form')
+        const $input = $search.find('.input')
+        const $suggestions = $search.find('.input__suggestions')
+
+        let results_html = ''
+
+        $search.on('input', 'input[name="search"]', _this.utils.debounce(function(e){
+            const post_type = $(e.target).data('search')
+            const keyword = e.target.value
+
+            if(keyword.length > 0){
+                $.ajax({
+                    method: 'POST',
+                    url: ccpt_data.ajax_url,
+                    data: {
+                        'action': 'search',
+                        'post_type': post_type,
+                        'keyword': keyword
+                    },
+                    beforeSend: function(){
+                        $search.addClass('search-form--loading')
+                    },
+                    success: function(res){
+                        $search.removeClass('search-form--loading')
+
+                        if(res.status === 'html'){
+                            results_html = res.message
+
+                            if(res.data.have_results){
+                                $input.addClass('input--suggested')
+                            }
+                            else{
+                                $input.removeClass('input--suggested')
+                            }
+
+                            $suggestions.html(results_html)
+                        }
+                    }
+                })
+            }
+            else{
+                $input.removeClass('input--suggested')
+            }
+        }) )
     }
 
 
