@@ -71,6 +71,7 @@ get_header();
         <?php
         
         $about_title = carbon_get_the_post_meta( 'about_title' );
+        $about_title_link = get_permalink( carbon_get_the_post_meta( 'about_title_link' ) );
         $about_content = carbon_get_the_post_meta( 'about_content' );
 
         ?>
@@ -78,7 +79,13 @@ get_header();
         <div class="main-about__inner">
             <div class="main-about__content main-about-content">
                 <?php if( $about_title ) : ?>
-                    <div class="main-about-content__title title"><?=$about_title; ?></div>
+                    <div class="main-about-content__title title">
+                        <?=$about_title_link ? "<a href='{$about_title_link}'>" : ''; ?>
+
+                        <?=$about_title; ?>
+
+                        <?=$about_title_link ? "</a>" : ''; ?>
+                    </div>
                 <?php endif; ?>
 
                 <?php if( $about_content ) : ?>

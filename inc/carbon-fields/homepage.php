@@ -21,6 +21,8 @@ Container::make( 'post_meta', __( 'Налаштування сторінки', '
     ) )
     ->add_tab( __( 'Про нас', 'ce-crypto' ), array(
         Field::make( 'text', 'about_title', __( 'Заголовок секції', 'ce-crypto' ) ),
+        Field::make( 'select', 'about_title_link', __( 'Сторінка посилання заголовку', 'ce-crypto' ) )
+            ->set_options( ccpt_get_page_choices() ),
         Field::make( 'rich_text', 'about_content', __( 'Контент секції', 'ce-crypto' ) ),
     ) )
     ->add_tab( __( 'Наші партнери', 'ce-crypto' ), array(
