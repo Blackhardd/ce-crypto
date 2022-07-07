@@ -21,11 +21,12 @@ get_header();
     <div class="page-content page-content--sidebar-right">
         <div class="page-content__main">
             <?php if( have_posts() ) : ?>
-                <?php $current_char = ''; ?>
                 <div class="terms-list">
-                    <?php while( have_posts() ) : ?>
-                        <?php
-                        
+                    <?php
+                    
+                    $current_char = '';
+                    
+                    while( have_posts() ) :
                         the_post();
 
                         if( $current_char !== ccpt_get_string_first_char( get_the_title() ) ){
@@ -36,8 +37,9 @@ get_header();
 
                         get_template_part( 'template-parts/term/item' );
                         
-                        ?>
-                    <?php endwhile; ?>
+                    endwhile;
+                    
+                    ?>
                 </div>
 
                 <input type="hidden" name="current_char" value="<?=$current_char; ?>">
