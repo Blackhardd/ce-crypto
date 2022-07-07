@@ -1,7 +1,7 @@
 <?php
 
 $current_url = ccpt_get_current_url();
-$difficulties = ccpt_get_all_article_difficulties();
+$difficulties = ccpt_get_difficulties();
 $active_filters = isset( $_GET['difficulty'] ) ? explode( ',', $_GET['difficulty'] ) : [];
 
 ?>
@@ -14,15 +14,14 @@ $active_filters = isset( $_GET['difficulty'] ) ? explode( ',', $_GET['difficulty
 
         <div class="filter__content">
             <div class="tags-group">
-                <?php foreach( $difficulties as $difficulty ) : ?>
-                    <?php
+                <?php
+                
+                foreach( $difficulties as $slug => $title ) :
+                    $is_active = isset( $_GET['difficulty'] ) && array_search( $slug, $active_filters ) !== false;
+                    $link = ccpt_add_filter_query_params( 'difficulty', $slug, $current_url );
                     
-                    $is_active = isset( $_GET['difficulty'] ) && array_search( $difficulty->term_id, $active_filters ) !== false;
-                    $link = ccpt_add_filter_query_params( 'difficulty', $difficulty->term_id, $current_url );
-                        
-                    ?>
-
-                    <a href="<?=$link; ?>" class="tag <?=$is_active ? 'tag--active' : ''; ?>"><?=$difficulty->name; ?></a>
+                ?>
+                    <a href="<?=$link; ?>" class="tag <?=$is_active ? 'tag--active' : ''; ?>"><?=$title; ?></a>
                 <?php endforeach; ?>
             </div>
         </div>

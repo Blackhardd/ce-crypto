@@ -84,66 +84,70 @@ get_header();
 
                 ?>
 
-                        <div class="articles-category <?="articles-category--{$course_user_data['status']}"; ?>">
-                            <div class="articles-category__header">
-                                <div class="articles-category__title"><?=$category->name?></div>
+                    <div class="articles-category <?="articles-category--{$course_user_data['status']}"; ?>">
+                        <div class="articles-category__header">
+                            <div class="articles-category__title"><?=$category->name?></div>
 
-                                <?php if( is_user_logged_in() ) : ?>
-                                    <div class="articles-category__progress">
-                                        <div class="progress-bar">
-                                            <div class="progress-bar__label"><?=__( 'Прогрес', 'ce-crypto' ); ?></div>
-                                            <div class="progress-bar__bar">
-                                                <div data-percentage="<?=$course_user_data['progress']; ?>" style="width: <?=$course_user_data['progress']; ?>%"></div>
-                                            </div>
+                            <?php if( is_user_logged_in() ) : ?>
+                                <div class="articles-category__progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-bar__label"><?=__( 'Прогрес', 'ce-crypto' ); ?></div>
+                                        <div class="progress-bar__bar">
+                                            <div data-percentage="<?=$course_user_data['progress']; ?>" style="width: <?=$course_user_data['progress']; ?>%"></div>
                                         </div>
                                     </div>
-
-                                    <a class="articles-category__link" href="<?=add_query_arg( array( 'begin_course' => 'true' ), get_term_link( $category->term_id ) ); ?>"><?=__( 'Обрати курс', 'ce-crypto' ); ?></a>
-                                <?php endif; ?>
-                            </div>
-
-                            <div class="articles-category__body">
-                                <div class="articles-category__pinned">
-                                    <?php ccpt_get_article_card_template( $most_recent_article ); ?>
                                 </div>
 
-                                <?php if( $recent_articles ) : ?>
-                                    <div class="recent-articles recent-articles--category articles-category__recent">
-                                        <ul class="recent-articles__list">
-                                            <?php foreach( $recent_articles as $article ) : ?>
-                                                <li class="recent-article-item">
-                                                    <div class="recent-article-item__header">
-                                                        <div class="recent-article-item__category"><?=ccpt_get_article_category( $article->ID )->name; ?></div>
-                                                        <div class="recent-article-item__date"><?=get_the_date( 'd.m.Y', $article->ID ); ?></div>
-                                                    </div>
-
-                                                    <div class="recent-article-item__title">
-                                                        <a class="recent-article-item__link" href="<?=get_permalink( $article->ID ); ?>"><?=$article->post_title; ?></a>
-                                                    </div>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-
-                                        <div class="recent-articles__footer">
-                                            <a href="<?=get_term_link( $category->term_id ); ?>" class="arrow-button arrow-button--right">
-                                                <div class="arrow-button__title"><?=__( 'Більше статей', 'ce-crypto' ); ?></div>
-                                                
-                                                <div class="arrow-button__icon">
-                                                    <?=ccpt_get_icon( 'arrow-right/arrow' ); ?>
-                                                    <?=ccpt_get_icon( 'arrow-right/circle' ); ?>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
+                                <a class="articles-category__link" href="<?=add_query_arg( array( 'begin_course' => 'true' ), get_term_link( $category->term_id ) ); ?>"><?=__( 'Обрати курс', 'ce-crypto' ); ?></a>
+                            <?php endif; ?>
                         </div>
+
+                        <div class="articles-category__body">
+                            <div class="articles-category__pinned">
+                                <?php ccpt_get_article_card_template( $most_recent_article ); ?>
+                            </div>
+
+                            <?php if( $recent_articles ) : ?>
+                                <div class="recent-articles recent-articles--category articles-category__recent">
+                                    <ul class="recent-articles__list">
+                                        <?php foreach( $recent_articles as $article ) : ?>
+                                            <li class="recent-article-item">
+                                                <div class="recent-article-item__header">
+                                                    <div class="recent-article-item__category"><?=ccpt_get_article_category( $article->ID )->name; ?></div>
+                                                    <div class="recent-article-item__date"><?=get_the_date( 'd.m.Y', $article->ID ); ?></div>
+                                                </div>
+
+                                                <div class="recent-article-item__title">
+                                                    <a class="recent-article-item__link" href="<?=get_permalink( $article->ID ); ?>"><?=$article->post_title; ?></a>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+
+                                    <div class="recent-articles__footer">
+                                        <a href="<?=get_term_link( $category->term_id ); ?>" class="arrow-button arrow-button--right">
+                                            <div class="arrow-button__title"><?=__( 'Більше статей', 'ce-crypto' ); ?></div>
+                                                
+                                            <div class="arrow-button__icon">
+                                                <?=ccpt_get_icon( 'arrow-right/arrow' ); ?>
+                                                <?=ccpt_get_icon( 'arrow-right/circle' ); ?>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 <?php
                 
                     endforeach;
-                endif;
+                else :
                 
                 ?>
+                    <div class="nothing-found">
+                        <div class="nothing-found__title"><?=__( 'Курсів не знайдено.', 'ce-crypto' ); ?></div>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <aside class="sidebar sidebar--articles page-content__sidebar">
