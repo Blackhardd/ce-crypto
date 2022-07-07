@@ -119,16 +119,27 @@ fieldset {
 
 /* Form */
 
+.form__fields {
+    transition: opacity .3s ease;
+}
+
 .form__widget {
     margin: 40px 0;
 }
 
 .form__response {
     display: none;
-    margin: 40px 0;
+    margin: 20px 0;
     padding: 10px;
     border: 1px solid #C4C4C4;
     border-radius: 5px;
+}
+
+
+.form--loading .form__fields,
+.form--loading .form__widget {
+    opacity: .5;
+    pointer-events: none;
 }
 
 
@@ -153,6 +164,15 @@ fieldset {
 
 
 .form--register .form__submit {
+    width: 100%;
+}
+
+
+.form--lost-password .form__actions {
+    margin-top: 20px;
+}
+
+.form--lost-password .form__submit {
     width: 100%;
 }
 
@@ -224,13 +244,42 @@ fieldset {
 
 
 .btn--primary {
+    position: relative;
     display: inline-block;
     padding: 14px 25px;
     background-color: var(--c-primary);
+    overflow: hidden;
 }
 
 .btn--primary:hover {
     background-color: #E74B11;
+}
+
+.btn--primary::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: -16px;
+    left: calc(50% - 9px);
+    width: 16px;
+    height: 16px;
+    border: 4px solid #FFFFFF;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: kf_spin infinite 1s linear;
+    transition: top .3s ease, color .3s ease, background-color .3s ease;
+    pointer-events: none;
+}
+
+
+.btn--primary.btn--loading {
+    color: #E74B11;
+    background-color: #E74B11;
+    pointer-events: none;
+}
+
+.btn--primary.btn--loading::before {
+    top: calc(50% - 8px);
 }
 
 
@@ -626,6 +675,11 @@ fieldset {
     height: 50px;
     border: 1px solid #C4C4C4;
     border-radius: 25px;
+    transition: border-color .3s ease;
+}
+
+.social-login-button:hover {
+    border-color: var(--c-primary);
 }
 
 
@@ -2562,6 +2616,7 @@ a.tag:not(.tag--active):hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 86px 92px 66px;
     text-align: center;
 }
 
@@ -2575,6 +2630,77 @@ a.tag:not(.tag--active):hover {
     font-family: Intro;
     font-size: 24px;
     line-height: 24px;
+}
+
+
+/* Lost Password Trigger */
+
+.lost-password-trigger {
+    text-align: right;
+}
+
+.lost-password-trigger:not(:last-child) {
+    margin-bottom: 46px;
+}
+
+.lost-password-trigger__link {
+    color: var(--c-blue);
+    text-decoration: none;
+}
+
+
+/* Lost Password */
+
+.lost-password {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.lost-password__left {
+    width: 326px;
+}
+
+.lost-password__desc {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.lost-password__separator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #45463F;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: lowercase;
+}
+
+.lost-password__separator::before,
+.lost-password__separator::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: #C4C4C4;
+}
+
+.lost-password__separator::before {
+    margin-bottom: 12px;
+}
+
+.lost-password__separator::after {
+    margin-top: 12px;
+}
+
+.lost-password__right .social-login {
+    flex-direction: column;
+}
+
+.lost-password__right .social-login__title {
+    margin-right: unset;
+    margin-bottom: 50px;
 }
 
 
@@ -2605,9 +2731,18 @@ a.tag:not(.tag--active):hover {
     position: relative;
     width: 100%;
     max-width: 500px;
-    padding: 86px 92px 66px;
     background-color: #FFFFFF;
     z-index: 1;
+}
+
+.modal__header {
+    margin-bottom: 18px;
+}
+
+.modal__title {
+    font-family: Intro;
+    font-size: 32px;
+    line-height: 32px;
 }
 
 .modal__close {
@@ -2645,6 +2780,12 @@ a.tag:not(.tag--active):hover {
 
 .modal--active {
     display: flex;
+}
+
+
+#modal-lost-password .modal__inner {
+    max-width: 640px;
+    padding: 26px 46px 32px;
 }
 
 
@@ -2883,6 +3024,16 @@ a.tag:not(.tag--active):hover {
     to {
         transform: translateY(20px);
         opacity: 0;
+    }
+}
+
+@keyframes kf_spin {
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
     }
 }
 
@@ -3395,6 +3546,29 @@ a.tag:not(.tag--active):hover {
     .page-not-found__image {
         margin-right: unset;
         margin-bottom: 40px;
+    }
+
+
+    .lost-password {
+        flex-direction: column;
+    }
+
+    .lost-password__left {
+        width: 100%;
+        margin-bottom: 60px;
+    }
+
+    .lost-password__separator {
+        display: none;
+    }
+
+    .lost-password__right .social-login__title {
+        margin-bottom: 20px;
+    }
+
+
+    #modal-lost-password .modal__inner {
+        padding: 26px 20px 45px;
     }
 }
 

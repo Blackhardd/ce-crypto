@@ -1,5 +1,13 @@
+<?php
+
+$title = isset( $args['title'] ) && $args['title'] !== false ? $args['title'] : ( isset( $args['title'] ) && $args['title'] === false ? false : __( 'Увійти через соціальні мережі', 'ce-crypto' ) );
+
+?>
+
 <div class="social-login">
-    <div class="social-login__title"><?=__( 'Увійти через соціальні мережі', 'ce-crypto' ); ?></div>
+    <?php if( $title !== false ) : ?>
+        <div class="social-login__title"><?=$title; ?></div>
+    <?php endif; ?>
 
     <div class="social-login__buttons">
         <?php if( true ) : ?>

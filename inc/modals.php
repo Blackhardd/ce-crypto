@@ -25,3 +25,44 @@ function ccpt_article_non_logged_in_user_login_modal(){
         </div>
     <?php endif;
 }
+
+
+// Article lost password modal.
+
+add_action( 'wp_footer', 'ccpt_lost_password_modal' );
+
+function ccpt_lost_password_modal(){
+    wp_enqueue_script( 'micromodal' );
+
+    if( is_page( get_theme_mod( 'login_page' ) ) && !is_user_logged_in() ) : ?>
+        <div class="modal" id="modal-lost-password" aria-hidden="true">
+            <div class="modal__dimmer" data-micromodal-close></div>
+
+            <div class="modal__inner">
+                <div class="modal__header">
+                    <div class="modal__title"><?=__( 'Забули пароль', 'ce-crypto' ); ?></div>
+
+                    <button class="modal__close" data-micromodal-close><?=ccpt_get_icon( 'close' ); ?></button>
+                </div>
+
+                <div class="modal__content">
+                    <div class="lost-password">
+                        <div class="lost-password__left">
+                            <div class="lost-password__desc"><?=__( 'Будь ласка, введіть адресу своєї електронної пошти у форму нижче і ми надішлемо вам тимчасовий пароль.', 'ce-crypto' ); ?></div>
+
+                            <div class="lost-password__form">
+                                <?php get_template_part( 'template-parts/forms/lost-password' ); ?>
+                            </div>
+                        </div>
+
+                        <div class="lost-password__separator"><?=__( 'Або', 'ce-crypto' ); ?></div>
+
+                        <div class="lost-password__right">
+                            <?php get_template_part( 'template-parts/widgets/social-login', null, array( 'title' => __( 'Увійти як користувач', 'ce-crypto' ) ) ); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif;
+}

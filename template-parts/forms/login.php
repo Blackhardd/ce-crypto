@@ -26,6 +26,10 @@
     <div class="form__response"></div>
 
     <div class="form__widget">
+        <div class="lost-password-trigger">
+            <a href="#modal-lost-password" class="lost-password-trigger__link"><?=__( 'Забули пароль? Відновити.', 'ce-crypto' ); ?></a>
+        </div>
+
         <?php get_template_part( 'template-parts/widgets/social-login' ); ?>
     </div>
 

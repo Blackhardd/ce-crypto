@@ -92,7 +92,7 @@ function ccpt_enqueue_scripts(){
     // Register scripts
     
     wp_register_script( 'swiper', CCPT_THEME_URI . '/assets/js/libs/swiper-bundle.min.js', [], CCPT_THEME_VER, true );
-    wp_register_script( 'micromodal', CCPT_THEME_URI . '/assets/js/libs/micromodal.min.js', [], CCPT_THEME_VER, true );
+    wp_register_script( 'micromodal', CCPT_THEME_URI . '/assets/js/libs/micromodal.min.js', ['front'], CCPT_THEME_VER, true );
     wp_register_script( 'wnumb', CCPT_THEME_URI . '/assets/js/libs/wNumb.min.js', [], CCPT_THEME_VER, true );
     wp_register_script( 'noui-slider', CCPT_THEME_URI . '/assets/js/libs/nouislider.min.js', ['wnumb'], CCPT_THEME_VER, true );
     wp_register_script( 'forms', CCPT_THEME_URI . '/assets/js/forms.js', ['jquery'], CCPT_THEME_VER, true );
