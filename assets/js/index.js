@@ -3,6 +3,7 @@ jQuery(document).ready(function($){
 
     crypto.init = function(){
         // Generic
+        this.maybeStretchSiteContentWrapper()
         this.initSidebar()
         this.initPasswordField()
         this.initAccordeon()
@@ -80,6 +81,22 @@ jQuery(document).ready(function($){
 
 
     // Generic
+
+    crypto.maybeStretchSiteContentWrapper = function(){
+        stretchSiteContent()
+
+        $(window).resize(stretchSiteContent)
+
+        function stretchSiteContent(){
+            const viewport_height = $(window).height()
+            const body_height = $('body').height()
+
+            if(body_height < viewport_height){
+                const wrapper_height = viewport_height - $('header.header').outerHeight() - $('footer.footer').outerHeight()
+                $('.site-content').css('min-height', wrapper_height)
+            }
+        }
+    }
 
     crypto.initSidebar = function(){
         if(!$('.sidebar').length) return
