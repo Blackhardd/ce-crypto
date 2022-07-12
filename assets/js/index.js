@@ -10,6 +10,7 @@ jQuery(document).ready(function($){
         this.initCarousels()
         this.initModals()
         this.initPhoneMask()
+        this.initImagePicker()
 
         // Header
         this.initHeaderSearch()
@@ -245,8 +246,64 @@ jQuery(document).ready(function($){
     crypto.initPhoneMask = function(){
         if(!$('input[type="tel"]').length) return
 
-        $('input[type="tel"]').each(function(index){
+        $('input[type="tel"]').each(function(){
             IMask($(this)[0], { mask: '+{38} 000 000 00 00' })
+        })
+    }
+
+
+    crypto.initImagePicker = function(){
+        if(!$('.image-picker').length) return
+
+        const $picker = $('.image-picker')
+        const $cropper = $('.image-cropper')
+
+        let cropper = null
+
+        $picker.on('change', '.image-picker__input', function(e){
+            if(!e.target.files.length) return
+
+            const file = new FileReader()
+
+            file.onload = function(event){
+                const $image = $cropper.find('.image-cropper__image')
+
+                $image.attr('src', event.target.result)
+
+                if(!cropper){
+                    cropper = new Cropper($image[0], {
+                        aspectRatio: 1,
+                        movable: false,
+                        minCropBoxWidth: 150,
+                        minCropBoxHeight: 150
+                    })
+                }
+                else{
+                    cropper.replace(event.target.result)
+                }
+
+                MicroModal.show('modal-avatar-cropping', {
+                    openClass: 'modal--active',
+                    disableScroll: true,
+                    awaitOpenAnimation: true,
+                    awaitCloseAnimation: true
+                })
+
+                $cropper.on('click', '.image-cropper__submit', function(){
+                    cropper.getCroppedCanvas({ width: 150, height: 150 }).toBlob(function(blob){
+                        const file = new File([blob], e.target.files[0].name, { type: e.target.files[0].type } )
+                        const container = new DataTransfer()
+
+                        container.items.add(file)
+
+                        e.target.files = container.files
+
+                        $picker.find('.image-picker__preview').attr('src', window.URL.createObjectURL(blob))
+                    })
+                })
+            }
+
+            file.readAsDataURL(e.target.files[0])
         })
     }
 

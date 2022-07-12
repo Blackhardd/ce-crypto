@@ -209,6 +209,10 @@ fieldset {
     display: flex;
 }
 
+.form-row:last-child {
+    margin-bottom: -20px;
+}
+
 .form-row--one > .form-col {
     width: 100%;
 }
@@ -217,7 +221,7 @@ fieldset {
     width: 50%;
 }
 
-.form-row:not(:last-child) .form-col {
+.form-row .form-col {
     margin-bottom: 20px;
 }
 
@@ -562,6 +566,56 @@ fieldset {
 .checkbox__title {
     color: #45463F;
     line-height: 24px;
+}
+
+
+/* Image Picker */
+
+.image-picker {
+    position: relative;
+    width: fit-content;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.image-picker__label {
+    cursor: pointer;
+}
+
+.image-picker__dimmer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.image-picker:hover .image-picker__dimmer {
+    opacity: 1;
+}
+
+.image-picker__dimmer svg {
+    display: block;
+    transform: translateY(20px);
+    transition: transform .3s ease;
+}
+
+.image-picker:hover .image-picker__dimmer svg {
+    transform: translateY(0);
+}
+
+.image-picker__input {
+    appearance: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
 }
 
 
@@ -2704,6 +2758,14 @@ a.tag:not(.tag--active):hover {
 }
 
 
+/* Image Cropper */
+
+.image-cropper__submit {
+    width: 100%;
+    margin-top: 20px;
+}
+
+
 /* Modal */
 
 .modal {
@@ -2786,6 +2848,12 @@ a.tag:not(.tag--active):hover {
 #modal-lost-password .modal__inner {
     max-width: 640px;
     padding: 26px 46px 32px;
+}
+
+#modal-avatar-cropping .modal__inner {
+    width: unset;
+    padding: 20px;
+    background-color: unset;
 }
 
 
@@ -3283,6 +3351,15 @@ a.tag:not(.tag--active):hover {
 
     .form--contact .form__actions button[type="submit"] {
         max-width: 274px;
+    }
+
+
+    .form-row--two {
+        flex-direction: column;
+    }
+
+    .form-row--two .form-col {
+        width: 100%;
     }
 
 

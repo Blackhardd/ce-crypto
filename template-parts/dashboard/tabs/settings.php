@@ -11,6 +11,26 @@ $profile = ccpt_get_current_user_profile();
         <fieldset>
             <div class="form-row form-row--one">
                 <div class="form-col">
+                    <div class="image-picker">
+                        <label class="image-picker__label">
+                            <div class="image-picker__dimmer">
+                                <?=ccpt_get_icon( 'image-picker' ); ?>
+                            </div>
+
+                            <?php if( $profile['avatar'] && $avatar_url = wp_get_attachment_image_url( $profile['avatar'], 'thumbnail' ) ) : ?>
+                                <img src="<?=$avatar_url; ?>" class="image-picker__preview">
+                            <?php else : ?>
+                                <?=ccpt_get_avatar_placeholder_image( ['image-picker__preview'] ); ?>
+                            <?php endif; ?>
+
+                            <input type="file" accept="image/png, image/jpeg" name="avatar" class="image-picker__input">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-row--one">
+                <div class="form-col">
                     <div class="input input--default input--required input--full-name">
                         <label class="input__label" for="profile-full-name"><?=__( "Ім'я та прізвище", 'ce-crypto' ); ?></label>
 

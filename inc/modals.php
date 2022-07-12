@@ -1,5 +1,32 @@
 <?php
 
+
+// Avatar cropping modal.
+
+add_action( 'wp_footer', 'ccpt_avatar_cropping_modal' );
+
+function ccpt_avatar_cropping_modal(){ ?>
+
+    <div class="modal" id="modal-avatar-cropping" aria-hidden="true">
+        <div class="modal__dimmer"></div>
+
+        <div class="modal__inner">
+            <div class="modal__content">
+                <div class="image-cropper">
+                    <div class="image-cropper__inner">
+                        <img src="" class="image-cropper__image">
+                    </div>
+                    
+                    <button class="btn btn--primary image-cropper__submit" data-micromodal-close><?=__( 'Зберегти', 'ce-crypto' ); ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+}
+
+
 // Article login modal for non logged in users.
 
 add_action( 'wp_footer', 'ccpt_article_non_logged_in_user_login_modal' );

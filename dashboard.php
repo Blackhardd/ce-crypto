@@ -38,11 +38,17 @@ get_header();
 
                     <div class="dashboard__nav">
                         <div class="dashboard__profile">
-                            <?php if( $avatar = ccpt_get_current_user_avatar() ) : ?>
-                                <?=wp_get_attachment_image( $avatar, 'thumbnail', false, array( 'class' => 'dashboard__avatar' ) ); ?>
-                            <?php else : ?>
-                                <?php ccpt_get_icon( 'dashboard/avatar-placeholder' ); ?>
-                            <?php endif; ?>
+                            <?php
+
+                            $avatar = ccpt_get_current_user_avatar();
+                            
+                            if( $avatar && $avatar_image = wp_get_attachment_image( $avatar, 'thumbnail', false, array( 'class' => 'dashboard__avatar' ) ) ) :
+                                echo $avatar_image;
+                            else :
+                                echo ccpt_get_icon( 'dashboard/avatar-placeholder' );
+                            endif;
+                            
+                            ?>
 
                             <div class="dashboard__name"><?=ccpt_get_current_user_fullname(); ?></div>
                             <div class="dashboard__username"><?=ccpt_get_current_user_username(); ?></div>

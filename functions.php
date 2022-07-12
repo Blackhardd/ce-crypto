@@ -77,8 +77,9 @@ add_action( 'wp_enqueue_scripts', 'ccpt_enqueue_scripts' );
 function ccpt_enqueue_scripts(){
     // Register styles
 
-    wp_register_style( 'swiper', CCPT_THEME_URI . '/assets/css/libs/swiper-bundle.min.css', ['theme'], CCPT_THEME_VER );
-    wp_register_style( 'noui-slider', CCPT_THEME_URI . '/assets/css/libs/nouislider.min.css', ['theme'], CCPT_THEME_VER );
+    wp_register_style( 'swiper', CCPT_THEME_URI . '/assets/css/libs/swiper-bundle.min.css', [], CCPT_THEME_VER );
+    wp_register_style( 'noui-slider', CCPT_THEME_URI . '/assets/css/libs/nouislider.min.css', [], CCPT_THEME_VER );
+    wp_register_style( 'cropper', CCPT_THEME_URI . '/assets/css/libs/cropper.min.css', [], CCPT_THEME_VER );
 
 
     // Enqueue style
@@ -86,7 +87,7 @@ function ccpt_enqueue_scripts(){
     wp_enqueue_style( 'fonts', CCPT_THEME_URI . '/assets/css/fonts.css', [], CCPT_THEME_VER );
     wp_enqueue_style( 'theme', get_stylesheet_uri(), ['fonts'], CCPT_THEME_VER );
     wp_enqueue_style( 'critical', CCPT_THEME_URI . '/assets/css/critical.css', ['theme'], CCPT_THEME_VER );
-    wp_enqueue_style( 'theme-styles', CCPT_THEME_URI . '/assets/css/index.css', ['theme'], CCPT_THEME_VER );
+    wp_enqueue_style( 'theme-styles', CCPT_THEME_URI . '/assets/css/index.css', ['theme', 'swiper', 'noui-slider', 'cropper'], CCPT_THEME_VER );
 
     
     // Register scripts
@@ -96,6 +97,7 @@ function ccpt_enqueue_scripts(){
     wp_register_script( 'wnumb', CCPT_THEME_URI . '/assets/js/libs/wNumb.min.js', [], CCPT_THEME_VER, true );
     wp_register_script( 'noui-slider', CCPT_THEME_URI . '/assets/js/libs/nouislider.min.js', ['wnumb'], CCPT_THEME_VER, true );
     wp_register_script( 'imask', CCPT_THEME_URI . '/assets/js/libs/imask.js', [], CCPT_THEME_VER, true );
+    wp_register_script( 'cropper-js', CCPT_THEME_URI . '/assets/js/libs/cropper.min.js', [], CCPT_THEME_VER, true );
     wp_register_script( 'forms', CCPT_THEME_URI . '/assets/js/forms.js', ['jquery'], CCPT_THEME_VER, true );
     wp_register_script( 'test', CCPT_THEME_URI . '/assets/js/test.js', ['jquery'], CCPT_THEME_VER, true );
     wp_register_script( 'filter-reading-time', CCPT_THEME_URI . '/assets/js/filters/reading-time.js', ['jquery', 'noui-slider'], CCPT_THEME_VER, true );
@@ -103,7 +105,7 @@ function ccpt_enqueue_scripts(){
 
     // Enqueue scripts
 
-    wp_enqueue_script( 'front', CCPT_THEME_URI . '/assets/js/index.js', ['jquery', 'imask'], CCPT_THEME_VER, true );
+    wp_enqueue_script( 'front', CCPT_THEME_URI . '/assets/js/index.js', ['jquery', 'imask', 'cropper-js'], CCPT_THEME_VER, true );
 
     if( is_singular( 'test' ) ){
         wp_enqueue_script( 'test' );
