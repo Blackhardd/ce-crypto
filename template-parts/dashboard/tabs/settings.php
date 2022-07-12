@@ -1,5 +1,7 @@
 <?php
 
+wp_enqueue_script( 'forms' );
+
 $profile = ccpt_get_current_user_profile();
 
 ?>

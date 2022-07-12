@@ -1,7 +1,8 @@
 jQuery(document).ready(function($){
     const name_regex = /^[A-Za-zА-ЯҐЄІЇа-яґєії0-9]{3,30}$/
+    const full_name_regex = /^[A-Za-zА-ЯҐЄІЇа-яґєії0-9]{3,30} [A-Za-zА-ЯҐЄІЇа-яґєії0-9]{3,30}$/
     const email_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    const password_regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+    const password_regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,}$/
     const twitter_regex = /^@?(\w){1,15}$/
     const telegram_regex = /^(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*.*/
 
@@ -47,6 +48,9 @@ jQuery(document).ready(function($){
                     case 'first_name':
                     case 'last_name':
                         if(!validateName($field)) is_valid = false
+                        break
+                    case 'full_name':
+                        if(!validateFullName($field)) is_valid = false
                         break
                     case 'twitter':
                         if(!validateTwitter($field)) is_valid = false
@@ -153,6 +157,14 @@ jQuery(document).ready(function($){
         return displayValidationError(
             $field.val() === '' ? true : $field.val().match(name_regex),
             'Not valid name format.',
+            $field
+        )
+    }
+
+    function validateFullName($field){
+        return displayValidationError(
+            $field.val() === '' ? true : $field.val().match(full_name_regex),
+            'Not valid full name format.',
             $field
         )
     }
