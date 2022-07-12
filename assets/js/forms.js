@@ -85,8 +85,10 @@ jQuery(document).ready(function($){
             contentType: false,
             processData: false,
             beforeSend: function(){
-                let form_title = $form.attr('id').replace('form-', '')
-                console.log(`${form_title.charAt(0).toUpperCase() + form_title.slice(1)} form will be sent now.`)
+                if($form.attr('id')){
+                    let form_title = $form.attr('id').replace('form-', '')
+                    console.log(`${form_title.charAt(0).toUpperCase() + form_title.slice(1)} form will be sent now.`)
+                }
 
                 $form.addClass('form--loading')
                 $form.find('button[type="submit"]').addClass('btn--loading')
