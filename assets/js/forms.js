@@ -43,8 +43,9 @@ jQuery(document).ready(function($){
         switch ($field.attr('type')){
             case 'text':
                 switch ($field.attr('name')){
+                    case 'name':
                     case 'first_name':
-                    case 'second_name':
+                    case 'last_name':
                         if(!validateName($field)) is_valid = false
                         break
                     case 'twitter':
@@ -61,6 +62,7 @@ jQuery(document).ready(function($){
                 if(!validateEmail($field)) is_valid = false
                 break
             case 'tel':
+                if(!validatePhone($field)) is_valid = false
                 break
             case 'password':
                 if(!validatePassword($field)) is_valid = false
@@ -157,6 +159,14 @@ jQuery(document).ready(function($){
         return displayValidationError(
             $field.val() === '' ? true : $field.val().match(email_regex),
             'Email format is not valid.',
+            $field
+        )
+    }
+
+    function validatePhone($field){
+        return displayValidationError(
+            $field.val() === '' ? true : $field.val().length === 17,
+            'Phone format is not valid.',
             $field
         )
     }

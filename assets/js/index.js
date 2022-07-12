@@ -9,6 +9,7 @@ jQuery(document).ready(function($){
         this.initAccordeon()
         this.initCarousels()
         this.initModals()
+        this.initPhoneMask()
 
         // Header
         this.initHeaderSearch()
@@ -237,6 +238,15 @@ jQuery(document).ready(function($){
             })
 
             return false
+        })
+    }
+
+
+    crypto.initPhoneMask = function(){
+        if(!$('input[type="tel"]').length) return
+
+        $('input[type="tel"]').each(function(index){
+            IMask($(this)[0], { mask: '+{38} 000 000 00 00' })
         })
     }
 

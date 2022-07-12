@@ -95,6 +95,7 @@ function ccpt_enqueue_scripts(){
     wp_register_script( 'micromodal', CCPT_THEME_URI . '/assets/js/libs/micromodal.min.js', ['front'], CCPT_THEME_VER, true );
     wp_register_script( 'wnumb', CCPT_THEME_URI . '/assets/js/libs/wNumb.min.js', [], CCPT_THEME_VER, true );
     wp_register_script( 'noui-slider', CCPT_THEME_URI . '/assets/js/libs/nouislider.min.js', ['wnumb'], CCPT_THEME_VER, true );
+    wp_register_script( 'imask', CCPT_THEME_URI . '/assets/js/libs/imask.js', [], CCPT_THEME_VER, true );
     wp_register_script( 'forms', CCPT_THEME_URI . '/assets/js/forms.js', ['jquery'], CCPT_THEME_VER, true );
     wp_register_script( 'test', CCPT_THEME_URI . '/assets/js/test.js', ['jquery'], CCPT_THEME_VER, true );
     wp_register_script( 'filter-reading-time', CCPT_THEME_URI . '/assets/js/filters/reading-time.js', ['jquery', 'noui-slider'], CCPT_THEME_VER, true );
@@ -102,8 +103,7 @@ function ccpt_enqueue_scripts(){
 
     // Enqueue scripts
 
-    wp_enqueue_script( 'front', CCPT_THEME_URI . '/assets/js/index.js', ['jquery'], CCPT_THEME_VER, true );
-    wp_enqueue_script( 'forms' );
+    wp_enqueue_script( 'front', CCPT_THEME_URI . '/assets/js/index.js', ['jquery', 'imask'], CCPT_THEME_VER, true );
 
     if( is_singular( 'test' ) ){
         wp_enqueue_script( 'test' );

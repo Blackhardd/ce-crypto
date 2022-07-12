@@ -1,3 +1,9 @@
+<?php
+
+wp_enqueue_script( 'forms' );
+
+?>
+
 <form class="form form--login" id="form-login">
     <div class="form__fields">
         <fieldset>

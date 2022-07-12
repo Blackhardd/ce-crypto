@@ -1,3 +1,9 @@
+<?php
+
+wp_enqueue_script( 'forms' );
+
+?>
+
 <form class="form form--register" id="form-register">
     <div class="form__fields">
         <fieldset>

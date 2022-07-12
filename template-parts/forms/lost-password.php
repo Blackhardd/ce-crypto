@@ -1,3 +1,9 @@
+<?php
+
+wp_enqueue_script( 'forms' );
+
+?>
+
 <form class="form form--lost-password" id="form-lost-password">
     <div class="form__fields">
         <fieldset>

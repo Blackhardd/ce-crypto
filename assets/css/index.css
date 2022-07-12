@@ -503,12 +503,12 @@ fieldset {
 
 
 .input--valid .input__input {
-    border-color: var(--c-positive);
+    border-color: var(--c-positive) !important;
 }
 
 
 .input--error .input__input {
-    border-color: var(--c-negative);
+    border-color: var(--c-negative) !important;
 }
 
 

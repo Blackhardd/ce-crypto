@@ -1,9 +1,15 @@
+<?php
+
+wp_enqueue_script( 'forms' );
+
+?>
+
 <form class="form form--contact">
     <div class="form__fields">
         <fieldset>
             <div class="form-row form-row--two">
                 <div class="form-col">
-                    <div class="input input--transparent input--name">
+                    <div class="input input--transparent input--required input--name">
                         <div class="input__wrap">
                             <input type="text" name="name" placeholder="<?=__( "Ім'я", 'ce-crypto' ); ?>" class="input__input">
                         </div>
@@ -11,7 +17,7 @@
                 </div>
 
                 <div class="form-col">
-                    <div class="input input--transparent input--phone">
+                    <div class="input input--transparent input--required input--phone">
                         <div class="input__wrap">
                             <input type="tel" name="phone" placeholder="<?=__( 'Телефон', 'ce-crypto' ); ?>" class="input__input">
                         </div>
