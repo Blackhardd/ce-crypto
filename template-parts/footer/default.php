@@ -16,7 +16,7 @@
             <div class="footer-bot__inner">
                 <div class="footer-bot__links">
                     <?php if( $link = get_privacy_policy_url() ) : ?>
-                        <a class="footer-bot__link" href="<?=$link;?>"><?=__( 'Політика конфіденційності', 'ce-crypto' ); ?></a>
+                        <a class="footer-bot__link" href="<?=$link;?>"><?=__( 'Privacy Policy', 'ce-crypto' ); ?></a>
                     <?php endif; ?>
                 </div>
 
