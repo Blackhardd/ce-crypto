@@ -6,7 +6,7 @@ $profile = ccpt_get_current_user_profile();
 
 ?>
 
-<form class="form form--profile" id="form-profile">
+<form class="form form--profile" id="form-profile" autocomplete="off">
     <div class="form__fields">
         <fieldset>
             <div class="form-row form-row--one">
