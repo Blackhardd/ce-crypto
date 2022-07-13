@@ -16,7 +16,14 @@ $archive_link = get_post_type_archive_link( 'term' );
                     <?php
                         
                     $is_active = isset( $_GET['letter'] ) && intval( $_GET['letter'] ) === $key;
-                    $link = ccpt_add_filter_query_params( 'letter', $key, $archive_link );
+                    $link = '';
+
+                    if( $_GET['letter'] == $key ){
+                        $link = $archive_link;
+                    }
+                    else{
+                        $link = add_query_arg( 'letter', $key );
+                    }
                     
                     ?>
 
