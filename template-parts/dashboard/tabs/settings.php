@@ -95,7 +95,7 @@ $profile = ccpt_get_current_user_profile();
                         <label for="register-twitter" class="input__label"><?=__( 'Telegram Username', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="telegram" placeholder="@" value="<?=$profile['telegram']; ?>" class="input__input" id="register-telegram" autocomplete="off">
+                            <input type="text" name="telegram" placeholder="@" value="<?=$profile['telegram']; ?>" class="input__input" id="register-telegram" autocomplete="new-password">
                         </div>
                     </div>
                 </div>
