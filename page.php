@@ -7,19 +7,27 @@ if( have_posts() ) :
         the_post();
 
         ?>
-            <div class="container">
-                <?php the_post_thumbnail(); ?>
-                <?php the_content(); ?>
+
+            <div class="container container--narrow">
+                <?php
+
+                the_title();
+                the_content();
+
+                ?>
             </div>
+
         <?php
 
     endwhile;
 else :
 
 ?>
+
     <div class="container">
         <h2 align="center"><?=__( 'Постів не знайдено', 'ce-crypto' ); ?></h2>
     </div>
+
 <?php
 
 endif;
