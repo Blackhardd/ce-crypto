@@ -13,7 +13,15 @@ $course = $args;
 
     <div class="course__body">
         <div class="course__last-opened">
-            <?php ccpt_get_article_card_template( $course['last_opened'] ); ?>
+            <?php
+
+            if( $course['last_opened'] ) :
+                ccpt_get_article_card_template( $course['last_opened'] );
+            else :
+                ccpt_get_article_card_template( ccpt_get_category_most_recent_article( $course['id'] ) );
+            endif;
+                
+            ?>
         </div>
 
         <div class="course__info">
