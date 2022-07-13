@@ -20,6 +20,10 @@ $size = $args['size'];
             <?php endif; ?>
         </div>
 
-        <img src="<?=get_the_post_thumbnail_url( $article->ID, "article-card-{$size}" ); ?>">
+        <?php if( $thumbnail = get_the_post_thumbnail_url( $article->ID, "article-card-{$size}" ) ) : ?>
+            <img src="<?=$thumbnail; ?>">
+        <?php else : ?>
+            <img src="<?=ccpt_get_image_url( 'placeholder.png' ); ?>">
+        <?php endif; ?>
     </a>
 </div>
