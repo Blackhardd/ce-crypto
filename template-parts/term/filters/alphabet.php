@@ -16,11 +16,11 @@ $archive_link = get_post_type_archive_link( 'term' );
                     <?php
                         
                     $is_active = isset( $_GET['letter'] ) && intval( $_GET['letter'] ) === $key;
-                    $link = add_query_arg( array( 'letter' => $key ), $archive_link );
+                    $link = ccpt_add_filter_query_params( 'letter', $key, $archive_link );
                     
                     ?>
 
-                    <a <?=!$is_active ? "href='{$link}'" : ''; ?> class="tag <?=$is_active ? 'tag--active' : ''; ?>"><?=$letter; ?></a>
+                    <a href="<?=$link; ?>" class="tag <?=$is_active ? 'tag--active' : ''; ?>"><?=$letter; ?></a>
                 <?php endforeach; ?>
             </div>
         <?php endforeach; ?>
