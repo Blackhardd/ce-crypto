@@ -71,7 +71,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-password"><?=__( 'Пароль', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="password" name="password" placeholder="<?=__( 'Введіть новий пароль', 'ce-crypto' ); ?>" class="input__input" id="profile-password" autocomplete="off">
+                            <input type="password" name="password" placeholder="<?=__( 'Введіть новий пароль', 'ce-crypto' ); ?>" class="input__input" id="profile-password" autocomplete="new-password">
 
                             <button type="button" class="input__button"><?=ccpt_get_icon( 'input/password-toggle' ); ?></button>
                         </div>
@@ -85,7 +85,7 @@ $profile = ccpt_get_current_user_profile();
                         <label for="register-twitter" class="input__label"><?=__( 'Twitter Username', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="twitter" placeholder="@" value="<?=$profile['twitter']; ?>" class="input__input" id="register-twitter" autocomplete="off">
+                            <input type="text" name="twitter" placeholder="@" value="<?=$profile['twitter']; ?>" class="input__input" id="register-twitter" autocomplete="new-twitter">
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ $profile = ccpt_get_current_user_profile();
                         <label for="register-twitter" class="input__label"><?=__( 'Telegram Username', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="telegram" placeholder="@" value="<?=$profile['telegram']; ?>" class="input__input" id="register-telegram" autocomplete="new-password">
+                            <input type="text" name="telegram" placeholder="@" value="<?=$profile['telegram']; ?>" class="input__input" id="register-telegram" autocomplete="new-telegram">
                         </div>
                     </div>
                 </div>
