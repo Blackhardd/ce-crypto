@@ -1399,6 +1399,10 @@ fieldset {
     border-radius: 10px;
 }
 
+.achievment:not(:last-child) {
+    margin-bottom: 20px;
+}
+
 .achievment__thumb {
     display: block;
     margin-right: 20px;
