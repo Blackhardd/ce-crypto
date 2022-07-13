@@ -274,6 +274,9 @@ jQuery(document).ready(function($){
                     cropper = new Cropper($image[0], {
                         aspectRatio: 1,
                         movable: false,
+                        scalable: false,
+                        zoomable: false,
+                        zoomOnWheel: false,
                         minCropBoxWidth: 150,
                         minCropBoxHeight: 150
                     })
