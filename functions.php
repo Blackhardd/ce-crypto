@@ -59,6 +59,7 @@ function ccpt_setup_theme(){
     add_image_size( 'article-card-large', 804, 496, true );
     add_image_size( 'article-card-small', 392, 302, true );
     add_image_size( 'article-banner', 804, 320, true );
+    add_image_size( 'achievment-thumb', 52, 40, true );
     
 
     // Registering menus
