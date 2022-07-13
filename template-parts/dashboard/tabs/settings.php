@@ -35,7 +35,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-full-name"><?=__( "Ім'я та прізвище", 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="full_name" placeholder="<?=__( "Введіть ваше ім'я", 'ce-crypto' ); ?>" value="<?=$profile['full_name']; ?>" class="input__input" id="profile-full-name" autocomplete="off">
+                            <input type="text" name="full_name" placeholder="<?=__( "Введіть ваше ім'я", 'ce-crypto' ); ?>" value="<?=$profile['full_name']; ?>" class="input__input" id="profile-full-name" autocomplete="new-name">
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-email"><?=__( 'Електронна адреса', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="email" name="email" placeholder="<?=__( 'Введіть ваш email', 'ce-crypto' ); ?>" value="<?=$profile['email']; ?>" class="input__input" id="profile-email" autocomplete="off">
+                            <input type="email" name="email" placeholder="<?=__( 'Введіть ваш email', 'ce-crypto' ); ?>" value="<?=$profile['email']; ?>" class="input__input" id="profile-email" autocomplete="new-email">
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-phone"><?=__( 'Номер телефону', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="tel" name="phone" placeholder="<?=__( 'Введіть ваш номер телефону', 'ce-crypto' ); ?>" value="<?=$profile['phone']; ?>" class="input__input" id="profile-phone" autocomplete="off">
+                            <input type="tel" name="phone" placeholder="<?=__( 'Введіть ваш номер телефону', 'ce-crypto' ); ?>" value="<?=$profile['phone']; ?>" class="input__input" id="profile-phone" autocomplete="new-phone">
                         </div>
                     </div>
                 </div>
