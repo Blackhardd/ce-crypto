@@ -29,6 +29,22 @@ $profile = ccpt_get_current_user_profile();
                         <?php $result = ccpt_get_test_result( 0, $test ); ?>
 
                         <div class="achievment">
+                            <?php
+                            
+                            if( !empty( $last_article = ccpt_get_category_last_article( $result['course_id'] ) ) ) :
+                                if( !empty( $thumb_url = get_the_post_thumbnail_url( $last_article->ID, 'achievment-thumb' ) ) ) :
+                                
+                            ?>
+
+                                <img src="<?=$thumb_url; ?>" class="achievment__thumb">
+
+                            <?php
+
+                                endif;
+                            endif;
+                            
+                            ?>
+
                             <div class="achievment__title"><?=$result['course']; ?></div>
 
                             <div class="achievment__result">
