@@ -26,3 +26,27 @@ function ccpt_register_fields(){
     include CCPT_THEME_PATH . '/inc/carbon-fields/article.php';
     include CCPT_THEME_PATH . '/inc/carbon-fields/test.php';
 }
+
+
+// Disable default page editor on specific templates.
+
+add_action( 'init', 'gti_disable_default_page_editor' );
+
+function gti_disable_default_page_editor(){
+    if( is_admin() && isset( $_GET['post'] ) ){
+        $id = $_GET['post'];
+
+        $templates = [
+            'homepage.php',
+            'donations.php',
+            'about.php',
+            'faq.php'
+        ];
+
+        $current_page_template = get_post_meta( $id, '_wp_page_template', true );
+
+        if( in_array( $current_page_template, $templates ) || $id === get_option('page_for_posts', true ) ){
+            remove_post_type_support( 'page', 'editor' );
+        }
+    }
+}
