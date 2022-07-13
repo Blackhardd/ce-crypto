@@ -87,7 +87,6 @@ function ccpt_enqueue_scripts(){
 
     wp_enqueue_style( 'fonts', CCPT_THEME_URI . '/assets/css/fonts.css', [], CCPT_THEME_VER );
     wp_enqueue_style( 'theme', get_stylesheet_uri(), ['fonts'], CCPT_THEME_VER );
-    wp_enqueue_style( 'critical', CCPT_THEME_URI . '/assets/css/critical.css', ['theme'], CCPT_THEME_VER );
     wp_enqueue_style( 'theme-styles', CCPT_THEME_URI . '/assets/css/index.css', ['theme', 'swiper', 'noui-slider', 'cropper'], CCPT_THEME_VER );
 
     
@@ -130,5 +129,19 @@ function ccpt_enqueue_scripts(){
         wp_localize_script( 'front', 'ccpt_terms_data', array(
             'query_vars'    => json_encode( $wp_query->query_vars )
         ) );
+    }
+}
+
+
+// Print critical CSS.
+
+add_action( 'wp_head', 'ccpt_print_critical_css' );
+
+function ccpt_print_critical_css(){
+    if( file_exists( CCPT_THEME_PATH . '/assets/css/critical.css' ) ){
+        $css = file_get_contents( CCPT_THEME_PATH . '/assets/css/critical.css' );
+        $css = ccpt_minify_css( $css );
+
+        echo "<style id='critical-css'>{$css}</style>";
     }
 }
