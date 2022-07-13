@@ -2746,6 +2746,31 @@ a.tag:not(.tag--active):hover {
     align-items: center;
 }
 
+.footer-bot__inner > div {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.footer-bot__inner .copyright {
+    text-align: center;
+}
+
+.footer-bot__inner .company {
+    text-align: right;
+}
+
+.footer-bot__link {
+    color: #45463F;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+    transition: color .3s ease;
+}
+
+.footer-bot__link:hover {
+    color: var(--c-primary);
+}
+
 
 /* Filter Slider */
 

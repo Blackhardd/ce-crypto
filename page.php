@@ -11,7 +11,7 @@ if( have_posts() ) :
             <div class="container container--narrow">
                 <?php
 
-                the_title();
+                the_title( '<h1>', '</h1>' );
                 the_content();
 
                 ?>
