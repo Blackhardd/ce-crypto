@@ -35,7 +35,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-full-name"><?=__( "Ім'я та прізвище", 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="full_name" placeholder="<?=__( "Введіть ваше ім'я", 'ce-crypto' ); ?>" value="<?=$profile['full_name']; ?>" class="input__input" id="profile-full-name">
+                            <input type="text" name="full_name" placeholder="<?=__( "Введіть ваше ім'я", 'ce-crypto' ); ?>" value="<?=$profile['full_name']; ?>" class="input__input" id="profile-full-name" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-email"><?=__( 'Електронна адреса', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="email" name="email" placeholder="<?=__( 'Введіть ваш email', 'ce-crypto' ); ?>" value="<?=$profile['email']; ?>" class="input__input" id="profile-email">
+                            <input type="email" name="email" placeholder="<?=__( 'Введіть ваш email', 'ce-crypto' ); ?>" value="<?=$profile['email']; ?>" class="input__input" id="profile-email" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-phone"><?=__( 'Номер телефону', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="tel" name="phone" placeholder="<?=__( 'Введіть ваш номер телефону', 'ce-crypto' ); ?>" value="<?=$profile['phone']; ?>" class="input__input" id="profile-phone">
+                            <input type="tel" name="phone" placeholder="<?=__( 'Введіть ваш номер телефону', 'ce-crypto' ); ?>" value="<?=$profile['phone']; ?>" class="input__input" id="profile-phone" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ $profile = ccpt_get_current_user_profile();
                         <label class="input__label" for="profile-password"><?=__( 'Пароль', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="password" name="password" placeholder="<?=__( 'Введіть новий пароль', 'ce-crypto' ); ?>" class="input__input" id="profile-password">
+                            <input type="password" name="password" placeholder="<?=__( 'Введіть новий пароль', 'ce-crypto' ); ?>" class="input__input" id="profile-password" autocomplete="off">
 
                             <button type="button" class="input__button"><?=ccpt_get_icon( 'input/password-toggle' ); ?></button>
                         </div>
@@ -85,7 +85,7 @@ $profile = ccpt_get_current_user_profile();
                         <label for="register-twitter" class="input__label"><?=__( 'Twitter Username', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="twitter" placeholder="@" value="<?=$profile['twitter']; ?>" class="input__input" id="register-twitter">
+                            <input type="text" name="twitter" placeholder="@" value="<?=$profile['twitter']; ?>" class="input__input" id="register-twitter" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ $profile = ccpt_get_current_user_profile();
                         <label for="register-twitter" class="input__label"><?=__( 'Telegram Username', 'ce-crypto' ); ?></label>
 
                         <div class="input__wrap">
-                            <input type="text" name="telegram" placeholder="@" value="<?=$profile['telegram']; ?>" class="input__input" id="register-telegram">
+                            <input type="text" name="telegram" placeholder="@" value="<?=$profile['telegram']; ?>" class="input__input" id="register-telegram" autocomplete="off">
                         </div>
                     </div>
                 </div>
