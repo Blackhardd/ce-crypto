@@ -1,7 +1,7 @@
 <?php
 
 $current_url = ccpt_get_current_url();
-$difficulties = ccpt_get_difficulties();
+$difficulties = ccpt_get_difficulties_i18n();
 $active_filters = isset( $_GET['difficulty'] ) ? explode( ',', $_GET['difficulty'] ) : [];
 
 ?>

@@ -78,6 +78,23 @@ function ccpt_customize_register( $customizer ){
         'choices'       => $article_choices
     ) );
 
+    $customizer->add_section( 'articles_archive_difficulties_section', array(
+        'title'         => __( 'Рівні важкості', 'ce-crypto' ),
+        'panel'         => 'articles_archive_panel'
+    ) );
+
+    $difficulties = ccpt_get_difficulties();
+
+    foreach( $difficulties as $key => $title ){
+        $customizer->add_setting( 'difficulty_' . $key . '_title', array( 'default' => $title, 'type' => 'option' ) );
+
+        $customizer->add_control( 'difficulty_' . $key . '_title', array(
+            'id'            => 'difficulty_' . $key . '_title' . '_control',
+            'label'         => sprintf( __( 'Назва (%s)', 'ce-crypto' ), $title ),
+            'section'       => 'articles_archive_difficulties_section'
+        ) );
+    }
+
 
     // Single article page settings
 
