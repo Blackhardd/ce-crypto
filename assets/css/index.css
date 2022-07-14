@@ -1632,9 +1632,6 @@
 }
 
 
-/* Terms Archive */
-
-
 /* Term Item */
 
 .term-item {
@@ -1696,6 +1693,53 @@
 .term-item--expanded .term-item__readmore > svg {
     fill: #E8E8E8;
     transform: rotateX(180deg);
+}
+
+
+/* Term */
+
+.term {
+    color: var(--c-primary);
+}
+
+.term__desc {
+    position: absolute;
+    display: block;
+    padding-bottom: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.term__desc::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: calc(100% - 16px);
+    left: 20px;
+    width: 12px;
+    height: 12px;
+    background-color: #FFF;
+    border: 1px solid;
+    border-top: 0;
+    border-left: 0;
+    transform: rotateZ(45deg);
+    z-index: 1;
+}
+
+.term__desc-inner {
+    display: block;
+    padding: 20px;
+    color: #000000;
+    background-color: #FFF;
+    border: 1px solid var(--c-primary);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+}
+
+.term:hover .term__desc {
+    opacity: 1;
+    pointer-events: initial;
 }
 
 

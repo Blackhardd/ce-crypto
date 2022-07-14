@@ -29,6 +29,7 @@ jQuery(document).ready(function($){
 
         // Article
         this.initArticleLikes()
+        this.initArticleTerms()
     }
 
 
@@ -700,6 +701,30 @@ jQuery(document).ready(function($){
                 })
             }
         })
+    }
+
+
+    crypto.initArticleTerms = function(){
+        if(!$('.term').length) return
+
+        updateTooltips()
+
+        $(window).resize(updateTooltips)
+
+        function updateTooltips(){
+            const window_height = $(window).height()
+            const article_width = $('.article').width()
+
+            $('.term').each(function(){
+                const $el = $(this)
+
+                $(this).find('.term__desc').css({
+                    bottom: window_height - $el.offset().top + 'px',
+                    left: $el.offset().left + 'px',
+                    width: article_width + 'px'
+                })
+            })
+        }
     }
 
 
