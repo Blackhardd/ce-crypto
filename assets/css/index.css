@@ -3033,24 +3033,6 @@ a.tag:not(.tag--active):hover {
 }
 
 @media screen and (max-width: 1024px) {
-    .intro {
-        flex-direction: column;
-    }
-
-    .intro__recent {
-        width: 100%;
-        margin-top: 20px;
-        margin-left: unset;
-    }
-
-    
-    .recent-articles--home .recent-articles__list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 20px;
-    }
-
-
     .login__header,
     .login__body {
         grid-gap: 78px;
