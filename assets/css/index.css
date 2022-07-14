@@ -1711,8 +1711,7 @@
     transition: opacity .3s ease;
 }
 
-.term__desc::after {
-    content: "";
+.term__arrow {
     position: absolute;
     display: block;
     top: calc(100% - 16px);

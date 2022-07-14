@@ -713,6 +713,7 @@ jQuery(document).ready(function($){
 
         function updateTooltips(){
             const window_height = $(window).height()
+            const article_left = $('.article').offset().left
             const article_width = $('.article').width()
 
             $('.term').each(function(){
@@ -720,8 +721,12 @@ jQuery(document).ready(function($){
 
                 $(this).find('.term__desc').css({
                     bottom: window_height - $el.offset().top + 'px',
-                    left: $el.offset().left + 'px',
+                    left: article_left + 'px',
                     width: article_width + 'px'
+                })
+
+                $(this).find('.term__arrow').css({
+                    left: $(this).offset().left - article_left + ($(this).width() / 2 - 6) + 'px'
                 })
             })
         }
