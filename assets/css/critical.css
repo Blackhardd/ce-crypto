@@ -452,7 +452,7 @@ body:not(.home) .header {
         fill: #FFFFFF;
     }
 
-    
+
     .intro {
         flex-direction: column;
     }
@@ -489,5 +489,12 @@ body:not(.home) .header {
 
     .intro__pinned .article-card {
         height: unset;
+    }
+
+
+    .recent-articles--home .recent-articles__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-column-gap: unset;
     }
 }

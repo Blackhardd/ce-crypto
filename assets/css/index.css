@@ -3437,13 +3437,6 @@ a.tag:not(.tag--active):hover {
 }
 
 @media screen and (max-width: 718px) {
-    .recent-articles--home .recent-articles__list {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-column-gap: unset;
-    }
-
-
     .articles-grid {
         grid-template-columns: 1fr;
     }
