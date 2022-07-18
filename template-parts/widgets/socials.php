@@ -14,7 +14,7 @@ $socials = array(
     <ul class="social__list social-list">
         <?php foreach( $socials as $name => $link ) : ?>
             <li class="social-list__item">
-                <a class="social-list__link" href="<?=$link; ?>"><?=ccpt_get_icon( 'socials/' . str_replace( '_', '-', $name ) ); ?></a>
+                <a href="<?=$link; ?>" target="_blank" class="social-list__link"><?=ccpt_get_icon( 'socials/' . str_replace( '_', '-', $name ) ); ?></a>
             </li>
         <?php endforeach; ?>
     </ul>
