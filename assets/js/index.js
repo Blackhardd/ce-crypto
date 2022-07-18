@@ -229,10 +229,10 @@ jQuery(document).ready(function($){
     crypto.initModals = function(){
         if(!$('.modal').length) return
 
-        $('body').on('click', 'a[href^="#modal"]', function(e){
+        $('a[href^="#modal"]').on('click', function(e){
             e.preventDefault()
 
-            MicroModal.show($(e.target).attr('href').replace('#', ''), {
+            MicroModal.show($(this).attr('href').replace('#', ''), {
                 openClass: 'modal--active',
                 disableScroll: true,
                 awaitOpenAnimation: true,
