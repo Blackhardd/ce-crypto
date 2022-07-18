@@ -79,6 +79,7 @@ do_action( 'ccpt_before_single_article' );
                         $title = get_theme_mod( 'single_article_banner_title' );
                         $button_title = get_theme_mod( 'single_article_banner_button_title' );
                         $button_link = get_theme_mod( 'single_article_banner_button_link' );
+                        $button_link_target = get_theme_mod( 'single_article_banner_button_link_target' );
                         $image = get_theme_mod( 'single_article_banner_image' );
                             
                         ?>
@@ -96,7 +97,7 @@ do_action( 'ccpt_before_single_article' );
 
                                     <?php if( $button_title && $button_link ) : ?>
                                         <div class="banner__action">
-                                            <a href="<?=$button_link; ?>" class="btn btn--primary"><?=$button_title; ?></a>
+                                            <a href="<?=$button_link; ?>" <?=$button_link_target ? 'target="_blank"' : '' ; ?> class="btn btn--primary"><?=$button_title; ?></a>
                                         </div>
                                     <?php endif; ?>
                                 </div>
@@ -105,7 +106,7 @@ do_action( 'ccpt_before_single_article' );
                             </div>
                         <?php elseif( $type === 'image' ) : ?>
                             <div class="banner banner--image banner--article article__banner">
-                                <a href="<?=$button_link; ?>">
+                                <a href="<?=$button_link; ?>" <?=$button_link_target ? 'target="_blank"' : '' ; ?>>
                                     <img src="<?=wp_get_attachment_image_url( $image, 'article-banner' ); ?>" class="banner__image">
                                 </a>
                             </div>

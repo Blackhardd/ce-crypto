@@ -116,6 +116,7 @@ function ccpt_customize_register( $customizer ){
     $customizer->add_setting( 'single_article_banner_title', array( 'default' => '' ) );
     $customizer->add_setting( 'single_article_banner_button_title', array( 'default' => '' ) );
     $customizer->add_setting( 'single_article_banner_button_link', array( 'default' => '' ) );
+    $customizer->add_setting( 'single_article_banner_button_link_target', array( 'default' => '' ) );
     $customizer->add_setting( 'single_article_banner_image', array( 'default' => '' ) );
 
 
@@ -160,6 +161,14 @@ function ccpt_customize_register( $customizer ){
         'id'            => 'button_link_control',
         'label'         => __( 'Посилання', 'ce-crypto' ),
         'section'       => 'single_article_banner_section'
+    ) );
+
+    $customizer->add_control( 'single_article_banner_button_link_target', array(
+        'id'            => 'display_control',
+        'label'         => __( 'Відкривати у новій вкладці', 'ce-crypto' ),
+        'section'       => 'single_article_banner_section',
+        'type'          => 'checkbox',
+        'std'           => '1'
     ) );
 
     $customizer->add_control( new WP_Customize_Media_Control( $customizer, 'single_article_banner_image', 
