@@ -324,6 +324,8 @@ jQuery(document).ready(function($){
         let results_html = ''
         const media_query = window.matchMedia('(max-width: 1024px)')
 
+        console.log(media_query)
+
         media_query.addEventListener('change', function(e){
             if(e.matches){
                 $search.find('.header-search__input').val('')
@@ -430,6 +432,7 @@ jQuery(document).ready(function($){
         const $mobile_header = $('.header__mobile')
 
         $toggler.on('click', function(){
+            console.log($(this))
             $(this).toggleClass('active')
             $mobile_header.toggleClass('open')
         })
@@ -452,6 +455,8 @@ jQuery(document).ready(function($){
         const $togglers = $login.find('.login__title')
 
         const media_query = window.matchMedia('(max-width: 768px)')
+
+        console.log(media_query)
 
         if(media_query.matches){
             $login.find('.login__tab:first-child, .login__title:first-child').attr('data-active', '')
