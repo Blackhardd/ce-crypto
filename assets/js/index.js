@@ -429,15 +429,10 @@ jQuery(document).ready(function($){
         const $toggler = $('.header .burger')
         const $mobile_header = $('.header__mobile')
 
-        $toggler[0].addEventListener('click', function(e){
-            $(e.target).toggleClass('active')
+        $toggler.on('click touchstart', function(){
+            $(this).toggleClass('active')
             $mobile_header.toggleClass('open')
         })
-
-        // $toggler.on('click', function(){
-        //     $(this).toggleClass('active')
-        //     $mobile_header.toggleClass('open')
-        // })
 
         $('body').on('click', function(e){
             if(!$(e.target).closest('.header, .header-search-results').length){
