@@ -132,7 +132,7 @@ jQuery(document).ready(function($){
         const $toggler = $('.header .burger')
         const $mobile_header = $('.header__mobile')
 
-        $toggler.on('click', function(){
+        $toggler.on('click touchend', function(){
             $(this).toggleClass('active')
             $mobile_header.toggleClass('open')
         })
