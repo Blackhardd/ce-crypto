@@ -25,15 +25,19 @@ get_header();
 
         <div class="intro">
             <div class="intro__pinned">
-                <?php foreach( $intro_articles as $key => $article_id ) : ?>
-                    <?php if( $article_id ) : ?>
-                        <?php $article = get_post( $article_id ); ?>
-                        <?php ccpt_get_article_card_template( $article, $key === 0 ? 'large' : 'small' ); ?>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                <?php
+                
+                foreach( $intro_articles as $key => $article_id ) :
+                    if( $article_id ) :
+                        $article = get_post( $article_id );
+                        ccpt_get_article_card_template( $article, $key === 0 ? 'large' : 'small' );
+                    endif;
+                endforeach;
+                
+                ?>
             </div>
 
-            <?php if( $recent_articles = wp_get_recent_posts( array( 'post_type' => 'article' ), OBJECT ) ) : ?>
+            <?php if( $recent_articles = ccpt_get_recent_articles() ) : ?>
                 <div class="recent-articles recent-articles--default recent-articles--home intro__recent">
                     <ul class="recent-articles__list">
                         <?php foreach( $recent_articles as $article ) : ?>

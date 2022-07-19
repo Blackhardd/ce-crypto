@@ -2309,6 +2309,7 @@
 
 .sidebar {
     position: relative;
+    overflow-y: auto;
 }
 
 .sidebar__header {
