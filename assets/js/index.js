@@ -456,8 +456,6 @@ jQuery(document).ready(function($){
 
         const media_query = window.matchMedia('(max-width: 768px)')
 
-        console.log(media_query)
-
         if(media_query.matches){
             $login.find('.login__tab:first-child, .login__title:first-child').attr('data-active', '')
             $togglers.on('click', toggleTabsHandler)
