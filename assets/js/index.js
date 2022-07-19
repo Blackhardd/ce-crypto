@@ -128,24 +128,6 @@ jQuery(document).ready(function($){
     }
 
 
-    crypto.initMobileHeader = function(){
-        const $toggler = $('.header .burger')
-        const $mobile_header = $('.header__mobile')
-
-        $toggler.on('click touchend', function(){
-            $(this).toggleClass('active')
-            $mobile_header.toggleClass('open')
-        })
-
-        $('body').on('click', function(e){
-            if(!$(e.target).closest('.header, .header-search-results').length){
-                $toggler.removeClass('active')
-                $mobile_header.removeClass('open')
-            }
-        })
-    }
-
-
     crypto.initPasswordField = function(){
         if(!$('.input--password').length) return
 
@@ -228,7 +210,6 @@ jQuery(document).ready(function($){
             }
 
             if(media_query.matches){
-                console.log('matches')
                 swiper = new Swiper($carousel[0], cfg)
             }
 
@@ -443,6 +424,24 @@ jQuery(document).ready(function($){
     }
 
 
+    crypto.initMobileHeader = function(){
+        const $toggler = $('.header .burger')
+        const $mobile_header = $('.header__mobile')
+
+        $toggler.on('click', function(){
+            $(this).toggleClass('active')
+            $mobile_header.toggleClass('open')
+        })
+
+        $('body').on('click', function(e){
+            if(!$(e.target).closest('.header, .header-search-results').length){
+                $toggler.removeClass('active')
+                $mobile_header.removeClass('open')
+            }
+        })
+    }
+
+
     // Login page
 
     crypto.initLoginTabs = function(){
@@ -597,8 +596,6 @@ jQuery(document).ready(function($){
                         can_be_loaded = false
                     },
                     success: function(res){
-                        console.log(res)
-    
                         if(res.status === 'html'){
                             current_page++
                             current_char = res.data.current_char

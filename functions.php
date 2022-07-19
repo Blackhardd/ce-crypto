@@ -8,8 +8,7 @@
  */
 
 if( !defined( 'CCPT_THEME_VER' ) )
-    define( 'CCPT_THEME_VER', time() );
-    // define( 'CCPT_THEME_VER', wp_get_theme()->get( 'Version' ) );
+    define( 'CCPT_THEME_VER', wp_get_theme()->get( 'Version' ) );
 
 if( !defined( 'CCPT_THEME_URI' ) )
     define( 'CCPT_THEME_URI', get_template_directory_uri() );
