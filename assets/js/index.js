@@ -324,8 +324,6 @@ jQuery(document).ready(function($){
         let results_html = ''
         const media_query = window.matchMedia('(max-width: 1024px)')
 
-        console.log(media_query)
-
         media_query.addEventListener('change', function(e){
             if(e.matches){
                 $search.find('.header-search__input').val('')
@@ -431,11 +429,15 @@ jQuery(document).ready(function($){
         const $toggler = $('.header .burger')
         const $mobile_header = $('.header__mobile')
 
-        $toggler.on('click', function(){
-            console.log($(this))
-            $(this).toggleClass('active')
+        $toggler[0].addEventListener('click', function(e){
+            $(e.target).toggleClass('active')
             $mobile_header.toggleClass('open')
         })
+
+        // $toggler.on('click', function(){
+        //     $(this).toggleClass('active')
+        //     $mobile_header.toggleClass('open')
+        // })
 
         $('body').on('click', function(e){
             if(!$(e.target).closest('.header, .header-search-results').length){
