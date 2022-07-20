@@ -1,5 +1,8 @@
 <?php
 
+wp_enqueue_script( 'facebook-login' );
+
+
 $title = isset( $args['title'] ) && $args['title'] !== false ? $args['title'] : ( isset( $args['title'] ) && $args['title'] === false ? false : __( 'Увійти через соціальні мережі', 'ce-crypto' ) );
 
 ?>
