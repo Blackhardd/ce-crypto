@@ -15,8 +15,9 @@ do_action( 'ccpt_before_single_article' );
                 <div class="breadcrumbs breadcrumbs--article">
                     <a href="<?=get_post_type_archive_link( 'article' ); ?>" class="breadcrumbs__link breadcrumbs__link--home"><?=__( 'Статті', 'ce-crypto' ); ?></a>
 
-                    <?php $category = get_the_terms( get_the_ID(), 'article_category' )[0]; ?>
-                    <a href="<?=get_term_link( $category->term_id ); ?>" class="breadcrumbs__link"><?=$category->name; ?></a>
+                    <?php if( $category = get_the_terms( get_the_ID(), 'article_category' )[0] ) : ?>
+                        <a href="<?=get_term_link( $category->term_id ); ?>" class="breadcrumbs__link"><?=$category->name; ?></a>
+                    <?php endif; ?>
                 </div>
 
                 <article class="article">
