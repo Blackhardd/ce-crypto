@@ -115,16 +115,20 @@ do_action( 'ccpt_before_single_article' );
                     <?php endif; ?>
 
                     <div class="article__footer">
-                        <a href="<?=get_term_link( get_the_terms( get_the_ID(), 'article_category' )[0]->term_id ); ?>" class="arrow-button arrow-button--left">
-                            <div class="arrow-button__icon">
-                                <?=ccpt_get_icon( 'arrow-left/circle' ); ?>
-                                <?=ccpt_get_icon( 'arrow-left/arrow' ); ?>
-                            </div>
+                        <?php if( $category = get_the_terms( get_the_ID(), 'article_category' )[0] ) : ?>
+                            
+                            <a href="<?=get_term_link( $category->term_id ); ?>" class="arrow-button arrow-button--left">
+                                <div class="arrow-button__icon">
+                                    <?=ccpt_get_icon( 'arrow-left/circle' ); ?>
+                                    <?=ccpt_get_icon( 'arrow-left/arrow' ); ?>
+                                </div>
 
-                            <div class="arrow-button__title"><?=__( 'Назад до категорії', 'ce-crypto' ); ?></div>
-                        </a>
+                                <div class="arrow-button__title"><?=__( 'Назад до категорії', 'ce-crypto' ); ?></div>
+                            </a>
 
                         <?php
+
+                        endif;
                         
                         $previous_post = get_previous_post( true, '', 'article_category' );
                         
