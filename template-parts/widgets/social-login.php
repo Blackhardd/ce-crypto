@@ -14,7 +14,7 @@ $title = isset( $args['title'] ) && $args['title'] !== false ? $args['title'] : 
 
     <div class="social-login__buttons">
         <?php if( true ) : ?>
-            <a class="social-login-button social-login-button--facebook" href="#"><?=ccpt_get_icon( 'social-login/facebook' ); ?></a>
+            <a class="social-login-button social-login-button--facebook" href="#" data-login="facebook"><?=ccpt_get_icon( 'social-login/facebook' ); ?></a>
         <?php endif; ?>
 
         <?php if( $link = ccpt_get_google_auth_link() ) : ?>
