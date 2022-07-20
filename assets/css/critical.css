@@ -92,11 +92,13 @@ fieldset {
 
 .burger span {
     position: absolute;
+    display: block;
     left: 0;
     width: 100%;
     height: 2px;
     background: #000;
     transform-origin: center center;
+    pointer-events: none;
     transition: background 0.1s ease, opacity 0.25s ease, top 0.25s ease, transform 0.25s ease;
 }
 
