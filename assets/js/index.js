@@ -425,7 +425,7 @@ jQuery(document).ready(function($){
 
 
     crypto.initMobileHeader = function(){
-        const $toggler = $('.header .burger')
+        const $toggler = $('.mobile-menu-toggler')
         const $mobile_header = $('.header__mobile')
 
         $toggler.on('click', function(){

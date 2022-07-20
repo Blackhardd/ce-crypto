@@ -11,7 +11,7 @@
                 <?php get_template_part( 'template-parts/header/partials/profile-control' ); ?>
             </div>
 
-            <button type="button" class="burger">
+            <button type="button" class="burger mobile-menu-toggler">
                 <span></span>
                 <span></span>
                 <span></span>
