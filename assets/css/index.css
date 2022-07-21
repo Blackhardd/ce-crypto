@@ -2315,7 +2315,6 @@
 
 .sidebar {
     position: relative;
-    overflow-y: auto;
 }
 
 .sidebar__header {
@@ -3223,6 +3222,7 @@ a.tag:not(.tag--active):hover {
         padding: 24px 23px 28px;
         background-color: #FFFFFF;
         transform: translateX(100%);
+        overflow-y: auto;
         z-index: 101;
         transition: transform .3s ease;
     }
