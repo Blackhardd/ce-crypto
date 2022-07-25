@@ -433,12 +433,12 @@ jQuery(document).ready(function($){
             $mobile_header.toggleClass('open')
         })
 
-        $('body').on('click', function(e){
-            if(!$(e.target).closest('.header, .header-search-results').length){
-                $toggler.removeClass('active')
-                $mobile_header.removeClass('open')
-            }
-        })
+        // $('body').on('click', function(e){
+        //     if(!$(e.target).closest('.header, .header-search-results').length){
+        //         $toggler.removeClass('active')
+        //         $mobile_header.removeClass('open')
+        //     }
+        // })
     }
 
 
