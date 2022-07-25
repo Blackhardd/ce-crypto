@@ -4,6 +4,8 @@ jQuery(document).ready(function($){
     crypto.init = function(){
         // Generic
         this.maybeStretchSiteContentWrapper()
+        this.initMobileHeader()
+        this.initHeaderSearch()
         this.initSidebar()
         this.initPasswordField()
         this.initAccordeon()
@@ -11,10 +13,6 @@ jQuery(document).ready(function($){
         this.initModals()
         this.initPhoneMask()
         this.initImagePicker()
-
-        // Header
-        this.initHeaderSearch()
-        this.initMobileHeader()
 
         // Login page
         this.initLoginTabs()
@@ -100,6 +98,136 @@ jQuery(document).ready(function($){
             }
         }
     }
+
+
+    crypto.initMobileHeader = function(){
+        const $toggler = $('.mobile-menu-toggler')
+        const $mobile_header = $('.header__mobile')
+
+        $toggler.on('mousedown', function(){
+            $(this).toggleClass('active')
+            $mobile_header.toggleClass('open')
+        })
+
+        $('body').on('mousedown', function(e){
+            if(!$(e.target).closest('.header, .header-search-results').length){
+                $toggler.removeClass('active')
+                $mobile_header.removeClass('open')
+            }
+        })
+    }
+
+
+    crypto.initHeaderSearch = function(){
+        if(!$('.header-search').length) return
+
+        const _this = this
+
+        const $search = $('.header-search')
+
+        let results_html = ''
+        const media_query = window.matchMedia('(max-width: 1024px)')
+
+        media_query.addEventListener('change', function(e){
+            if(e.matches){
+                $search.find('.header-search__input').val('')
+                hideSearchResults()
+            }
+        })
+
+        $search.on('focus', '.header-search__input', function(){
+            $search.addClass('header-search--focus')
+
+            if(results_html){
+                showSearchResults()
+            }
+        })
+
+        $search.on('input', '.header-search__input', _this.utils.debounce(function(e){
+            const keyword = e.target.value
+
+            if(keyword.length){
+                $.ajax({
+                    method: 'POST',
+                    url: ccpt_data.ajax_url,
+                    data: {
+                        'action': 'search_articles',
+                        'keyword': keyword
+                    },
+                    beforeSend: function(){
+                        $search.addClass('header-search--loading')
+                    },
+                    success: function(res){
+                        $search.removeClass('header-search--loading')
+
+                        if(res.status === 'html'){
+                            results_html = res.message
+                            showSearchResults()
+                        }
+                    }
+                })
+            }
+            else{
+                results_html = ''
+                hideSearchResults()
+            }
+        }, 500))
+
+        $('body').on('mousedown', function(e){
+            if(!$(e.target).closest('.header-search, .header-search-results').length){
+                $search.removeClass('header-search--focus')
+                hideSearchResults()
+            }
+        })
+
+        $search.on('submit', '.header-search__form', function(e){
+            e.preventDefault()
+
+            return false
+        })
+
+        function showSearchResults(){
+            if(!$('.header-search-results').length){
+                $('<div class="header-search-results">' + results_html + '</div>').appendTo('body')
+
+                setTimeout(() => {
+                    $('.header-search-results').css({
+                        transform: 'translateY(0)',
+                        opacity: 1
+                    })
+                }, 10)
+            }
+            else{
+                $('.header-search-results').html(results_html)
+            }
+
+            const $results = $('.header-search-results')
+
+            $results.css({
+                left: $search.offset().left + 'px',
+                top: parseInt($search.offset().top) + parseInt($search.height()) + 1 + 'px',
+                width: $search.width() + 'px'
+            })
+
+            $(window).resize(function(){
+                $results.css({
+                    left: $search.offset().left + 'px',
+                    top: parseInt($search.offset().top) + parseInt($search.height()) + 1 + 'px',
+                    width: $search.width() + 'px'
+                })
+            })
+        }
+
+        function hideSearchResults(){
+            $('.header-search-results').css({
+                transform: 'translateY(10px)',
+                opacity: 0
+            }).on('transitionend', function(){
+                $(this).remove()
+            })
+        }
+    }
+
 
     crypto.initSidebar = function(){
         if(!$('.sidebar').length) return
@@ -308,137 +436,6 @@ jQuery(document).ready(function($){
 
             file.readAsDataURL(e.target.files[0])
         })
-    }
-
-
-    // Header
-
-    crypto.initHeaderSearch = function(){
-        if(!$('.header-search').length) return
-
-        const _this = this
-
-        const $search = $('.header-search')
-
-        let results_html = ''
-        const media_query = window.matchMedia('(max-width: 1024px)')
-
-        media_query.addEventListener('change', function(e){
-            if(e.matches){
-                $search.find('.header-search__input').val('')
-                hideSearchResults()
-            }
-        })
-
-        $search.on('focus', '.header-search__input', function(){
-            $search.addClass('header-search--focus')
-
-            if(results_html){
-                showSearchResults()
-            }
-        })
-
-        $search.on('input', '.header-search__input', _this.utils.debounce(function(e){
-            const keyword = e.target.value
-
-            if(keyword.length){
-                $.ajax({
-                    method: 'POST',
-                    url: ccpt_data.ajax_url,
-                    data: {
-                        'action': 'search_articles',
-                        'keyword': keyword
-                    },
-                    beforeSend: function(){
-                        $search.addClass('header-search--loading')
-                    },
-                    success: function(res){
-                        $search.removeClass('header-search--loading')
-
-                        if(res.status === 'html'){
-                            results_html = res.message
-                            showSearchResults()
-                        }
-                    }
-                })
-            }
-            else{
-                results_html = ''
-                hideSearchResults()
-            }
-        }, 500))
-
-        $('body').on('mousedown', function(e){
-            if(!$(e.target).closest('.header-search, .header-search-results').length){
-                $search.removeClass('header-search--focus')
-                hideSearchResults()
-            }
-        })
-
-        $search.on('submit', '.header-search__form', function(e){
-            e.preventDefault()
-
-            return false
-        })
-
-        function showSearchResults(){
-            if(!$('.header-search-results').length){
-                $('<div class="header-search-results">' + results_html + '</div>').appendTo('body')
-
-                setTimeout(() => {
-                    $('.header-search-results').css({
-                        transform: 'translateY(0)',
-                        opacity: 1
-                    })
-                }, 10)
-            }
-            else{
-                $('.header-search-results').html(results_html)
-            }
-
-            const $results = $('.header-search-results')
-
-            $results.css({
-                left: $search.offset().left + 'px',
-                top: parseInt($search.offset().top) + parseInt($search.height()) + 1 + 'px',
-                width: $search.width() + 'px'
-            })
-
-            $(window).resize(function(){
-                $results.css({
-                    left: $search.offset().left + 'px',
-                    top: parseInt($search.offset().top) + parseInt($search.height()) + 1 + 'px',
-                    width: $search.width() + 'px'
-                })
-            })
-        }
-
-        function hideSearchResults(){
-            $('.header-search-results').css({
-                transform: 'translateY(10px)',
-                opacity: 0
-            }).on('transitionend', function(){
-                $(this).remove()
-            })
-        }
-    }
-
-
-    crypto.initMobileHeader = function(){
-        const $toggler = $('.mobile-menu-toggler')
-        const $mobile_header = $('.header__mobile')
-
-        $toggler.on('click', function(){
-            $(this).toggleClass('active')
-            $mobile_header.toggleClass('open')
-        })
-
-        // $('body').on('click', function(e){
-        //     if(!$(e.target).closest('.header, .header-search-results').length){
-        //         $toggler.removeClass('active')
-        //         $mobile_header.removeClass('open')
-        //     }
-        // })
     }
 
 
