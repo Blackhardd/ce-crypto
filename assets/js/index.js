@@ -5,7 +5,6 @@ jQuery(document).ready(function($){
         // Generic
         this.maybeStretchSiteContentWrapper()
         this.initMobileHeader()
-        this.initHeaderSearch()
         this.initSidebar()
         this.initPasswordField()
         this.initAccordeon()
@@ -28,6 +27,8 @@ jQuery(document).ready(function($){
         // Article
         this.initArticleLikes()
         this.initArticleTerms()
+
+        this.initHeaderSearch()
     }
 
 
@@ -126,14 +127,16 @@ jQuery(document).ready(function($){
         const $search = $('.header-search')
 
         let results_html = ''
-        const media_query = window.matchMedia('(max-width: 1024px)')
+        const mq = window.matchMedia('screen and (max-width: 1024px)')
 
-        media_query.addEventListener('change', function(e){
-            if(e.matches){
-                $search.find('.header-search__input').val('')
-                hideSearchResults()
-            }
-        })
+        if(mq){
+            mq.addEventListener('change', function(e){
+                if(e.matches){
+                    $search.find('.header-search__input').val('')
+                    hideSearchResults()
+                }
+            }, false)
+        }
 
         $search.on('focus', '.header-search__input', function(){
             $search.addClass('header-search--focus')
