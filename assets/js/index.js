@@ -127,15 +127,26 @@ jQuery(document).ready(function($){
         const $search = $('.header-search')
 
         let results_html = ''
-        const mq = window.matchMedia('screen and (max-width: 1024px)')
 
-        if(mq){
-            mq.addEventListener('change', function(e){
-                if(e.matches){
-                    $search.find('.header-search__input').val('')
-                    hideSearchResults()
-                }
-            }, false)
+        if(window && window.matchMedia('screen and (max-width: 1024px)')){
+            const mq = window.matchMedia('screen and (max-width: 1024px)')
+
+            if(typeof mq.addEventListener !== 'undefined'){
+                mq.addEventListener('change', function(e){
+                    if(e.matches){
+                        $search.find('.header-search__input').val('')
+                        hideSearchResults()
+                    }
+                }, false)
+            }
+            else{
+                mq.addListener(function(e){
+                    if(e.matches){
+                        $search.find('.header-search__input').val('')
+                        hideSearchResults()
+                    }
+                })
+            }
         }
 
         $search.on('focus', '.header-search__input', function(){
