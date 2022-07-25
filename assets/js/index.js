@@ -331,7 +331,11 @@ jQuery(document).ready(function($){
 
         const $carousels = $('.carousel')
 
-        const media_query = window.matchMedia('(max-width: 560px)')
+        let mq = null
+
+        if(window && window.matchMedia('screen and (max-width: 560px)')){
+            mq = window.matchMedia('screen and (max-width: 560px)')
+        }
 
         $carousels.each(function(){
             const $carousel = $(this)
@@ -351,18 +355,32 @@ jQuery(document).ready(function($){
                 }
             }
 
-            if(media_query.matches){
-                swiper = new Swiper($carousel[0], cfg)
-            }
-
-            media_query.addEventListener('change', function(e){
-                if(!e.matches && swiper){
-                    swiper.destroy(true, true)
-                }
-                else if(e.matches){
+            if(mq){
+                if(mq.matches){
                     swiper = new Swiper($carousel[0], cfg)
                 }
-            })
+    
+                if(typeof mq.addEventListener !== 'undefined'){
+                    mq.addEventListener('change', function(e){
+                        if(!e.matches && swiper){
+                            swiper.destroy(true, true)
+                        }
+                        else if(e.matches){
+                            swiper = new Swiper($carousel[0], cfg)
+                        }
+                    }, false)
+                }
+                else{
+                    mq.addListener(function(e){
+                        if(!e.matches && swiper){
+                            swiper.destroy(true, true)
+                        }
+                        else if(e.matches){
+                            swiper = new Swiper($carousel[0], cfg)
+                        }
+                    })
+                }
+            }
         })
     }
 
@@ -461,23 +479,39 @@ jQuery(document).ready(function($){
         const $login = $('.login')
         const $togglers = $login.find('.login__title')
 
-        const media_query = window.matchMedia('(max-width: 768px)')
+        if(window && window.matchMedia('screen and (max-width: 768px)')){
+            const mq = window.matchMedia('screen and (max-width: 768px)')
 
-        if(media_query.matches){
-            $login.find('.login__tab:first-child, .login__title:first-child').attr('data-active', '')
-            $togglers.on('click', toggleTabsHandler)
-        }
-
-        media_query.addEventListener('change', function(e){
-            if(e.matches){
+            if(mq.matches){
                 $login.find('.login__tab:first-child, .login__title:first-child').attr('data-active', '')
                 $togglers.on('click', toggleTabsHandler)
             }
-            else{
-                $login.find('.login__tab, .login__title').removeAttr('data-active', '')
-                $togglers.off('click', toggleTabsHandler)
+    
+            if(typeof mq.addEventListener !== 'undefined'){
+                mq.addEventListener('change', function(e){
+                    if(e.matches){
+                        $login.find('.login__tab:first-child, .login__title:first-child').attr('data-active', '')
+                        $togglers.on('click', toggleTabsHandler)
+                    }
+                    else{
+                        $login.find('.login__tab, .login__title').removeAttr('data-active', '')
+                        $togglers.off('click', toggleTabsHandler)
+                    }
+                }, false)
             }
-        })
+            else {
+                mq.addListener(function(e){
+                    if(e.matches){
+                        $login.find('.login__tab:first-child, .login__title:first-child').attr('data-active', '')
+                        $togglers.on('click', toggleTabsHandler)
+                    }
+                    else{
+                        $login.find('.login__tab, .login__title').removeAttr('data-active', '')
+                        $togglers.off('click', toggleTabsHandler)
+                    }
+                })
+            }
+        }
 
         function toggleTabsHandler(e){
             const $target = $(e.target)

@@ -236,12 +236,21 @@
 
 .input__input {
     appearance: none;
+    -webkit-appearance: none;
     display: block;
     width: 100%;
     font-size: 14px;
     line-height: 24px;
     border: 0;
     transition: border-color .3s ease;
+}
+
+.input__input[type="search"] {
+    -webkit-appearance: textfield;
+}
+
+.input__input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
 }
 
 .input__input:focus {
