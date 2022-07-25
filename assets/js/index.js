@@ -128,26 +128,26 @@ jQuery(document).ready(function($){
 
         let results_html = ''
 
-        if(window && window.matchMedia('screen and (max-width: 1024px)')){
-            const mq = window.matchMedia('screen and (max-width: 1024px)')
+        // if(window && window.matchMedia('screen and (max-width: 1024px)')){
+        //     const mq = window.matchMedia('screen and (max-width: 1024px)')
 
-            if(typeof mq.addEventListener !== 'undefined'){
-                mq.addEventListener('change', function(e){
-                    if(e.matches){
-                        $search.find('.header-search__input').val('')
-                        hideSearchResults()
-                    }
-                }, false)
-            }
-            else{
-                mq.addListener(function(e){
-                    if(e.matches){
-                        $search.find('.header-search__input').val('')
-                        hideSearchResults()
-                    }
-                })
-            }
-        }
+        //     if(typeof mq.addEventListener !== 'undefined'){
+        //         mq.addEventListener('change', function(e){
+        //             if(e.matches){
+        //                 $search.find('.header-search__input').val('')
+        //                 hideSearchResults()
+        //             }
+        //         }, false)
+        //     }
+        //     else{
+        //         mq.addListener(function(e){
+        //             if(e.matches){
+        //                 $search.find('.header-search__input').val('')
+        //                 hideSearchResults()
+        //             }
+        //         })
+        //     }
+        // }
 
         $search.on('focus', '.header-search__input', function(){
             $search.addClass('header-search--focus')
