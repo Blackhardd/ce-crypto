@@ -41,7 +41,13 @@ do_action( 'ccpt_before_single_article' );
 
                     <div class="article__meta">
                         <div class="article__author meta meta--author">
-                            <div class="meta__icon"><?=ccpt_get_icon( 'meta/author' ); ?></div>
+                            <div class="meta__icon">
+                                <?php if( $avatar_url = wp_get_attachment_image_url( get_user_meta( get_the_author_meta( 'ID' ), 'ccpt_avatar', true ), 'avatar-small' ) ) : ?>
+                                    <img src="<?=$avatar_url; ?>" width="20" alt="<?php the_author(); ?>" style="border-radius: 50%;">
+                                <?php else : ?>
+                                    <?=ccpt_get_icon( 'meta/author' ); ?>
+                                <?php endif; ?>
+                            </div>
                             <div class="meta__value"><?php the_author(); ?></div>
                         </div>
 
