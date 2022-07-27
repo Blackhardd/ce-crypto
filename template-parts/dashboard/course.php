@@ -33,6 +33,8 @@ $course = $args;
 
                 $continue_link = get_term_link( $course['id'] );
 
+                var_dump( ccpt_is_test_locked( 0, $course['test'] ) );
+
                 if( ccpt_is_test_locked( 0, $course['test'] ) ){
                     $continue_link = add_query_arg( 'unlock_test', true, $continue_link );
                 }
