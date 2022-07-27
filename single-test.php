@@ -74,7 +74,7 @@ do_action( 'ccpt_before_single_test' );
                         <button class="test-action__button test__submit btn btn--primary" disabled><?=__( 'Перевірити відповіді', 'ce-crypto' ); ?></button>
                     </div>
                 <?php else : ?>
-                    <?php if( $result['score'] < 85 ) : ?>
+                    <?php if( $result['score'] < 85 ) : var_dump( ccpt_is_test_locked() ); ?>
                         <?php if( !ccpt_is_test_locked() ) : ?>
                             <div class="test-action test__action">
                                 <button class="test-action__button test__submit btn btn--primary" disabled><?=__( 'Пройти тест знову', 'ce-crypto' ); ?> *</button>
