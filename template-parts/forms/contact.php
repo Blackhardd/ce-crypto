@@ -17,9 +17,9 @@ wp_enqueue_script( 'forms' );
                 </div>
 
                 <div class="form-col">
-                    <div class="input input--transparent input--required input--phone">
+                    <div class="input input--transparent input--required input--email">
                         <div class="input__wrap">
-                            <input type="tel" name="phone" placeholder="<?=__( 'Телефон', 'ce-crypto' ); ?>" class="input__input">
+                            <input type="email" name="email" placeholder="<?=__( 'Email', 'ce-crypto' ); ?>" class="input__input">
                         </div>
                     </div>
                 </div>
