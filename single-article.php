@@ -77,12 +77,12 @@ $article_category = ccpt_get_article_category( get_the_ID() );
                     </div>
 
                     <div class="article__content">
-                        <?=links_add_target( get_the_content() ); ?>
+                        <?=links_add_target( apply_filters( 'the_content', get_the_content() ) ); ?>
                     </div>
 
-                    <?php if( boolval( get_theme_mod( 'single_article_banner_display' ) ) ) : ?>
-                        <?php
-                        
+                    <?php
+                    
+                    if( boolval( get_theme_mod( 'single_article_banner_display' ) ) ) :
                         $type = get_theme_mod( 'single_article_banner_type' );
                         $overtitle = get_theme_mod( 'single_article_banner_overtitle' );
                         $title = get_theme_mod( 'single_article_banner_title' );
@@ -91,9 +91,8 @@ $article_category = ccpt_get_article_category( get_the_ID() );
                         $button_link_target = get_theme_mod( 'single_article_banner_button_link_target' );
                         $image = get_theme_mod( 'single_article_banner_image' );
                             
-                        ?>
+                        if( $type === 'default' ) : ?>
 
-                        <?php if( $type === 'default' ) : ?>
                             <div class="banner banner--default banner--article article__banner">
                                 <div class="banner__content">
                                     <?php if( $overtitle ) : ?>
@@ -113,14 +112,21 @@ $article_category = ccpt_get_article_category( get_the_ID() );
                                 
                                 <img src="<?=wp_get_attachment_image_url( $image, 'article-banner' ); ?>" class="banner__image">
                             </div>
+
                         <?php elseif( $type === 'image' ) : ?>
+
                             <div class="banner banner--image banner--article article__banner">
                                 <a href="<?=$button_link; ?>" <?=$button_link_target ? 'target="_blank"' : '' ; ?>>
                                     <img src="<?=wp_get_attachment_image_url( $image, 'article-banner' ); ?>" class="banner__image">
                                 </a>
                             </div>
-                        <?php endif; ?>
-                    <?php endif; ?>
+
+                        <?php
+                    
+                        endif;
+                    endif;
+                    
+                    ?>
 
                     <div class="article__footer">
                         <?php if( $article_category ) : ?>
