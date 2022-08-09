@@ -75,7 +75,7 @@ do_action( 'ccpt_before_single_article' );
                     </div>
 
                     <div class="article__content">
-                        <?php the_content(); ?>
+                        <?=links_add_target( get_the_content() ); ?>
                     </div>
 
                     <?php if( boolval( get_theme_mod( 'single_article_banner_display' ) ) ) : ?>
