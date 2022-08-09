@@ -5,6 +5,8 @@ get_header();
 
 do_action( 'ccpt_before_single_article' );
 
+$article_category = ccpt_get_article_category( get_the_ID() );
+
 ?>
 
 <?php if( have_posts() ) : ?>
@@ -15,8 +17,8 @@ do_action( 'ccpt_before_single_article' );
                 <div class="breadcrumbs breadcrumbs--article">
                     <a href="<?=get_post_type_archive_link( 'article' ); ?>" class="breadcrumbs__link breadcrumbs__link--home"><?=__( 'Статті', 'ce-crypto' ); ?></a>
 
-                    <?php if( $category = get_the_terms( get_the_ID(), 'article_category' )[0] ) : ?>
-                        <a href="<?=get_term_link( $category->term_id ); ?>" class="breadcrumbs__link"><?=$category->name; ?></a>
+                    <?php if( $article_category ) : ?>
+                        <a href="<?=get_term_link( $article_category->term_id ); ?>" class="breadcrumbs__link"><?=$article_category->name; ?></a>
                     <?php endif; ?>
                 </div>
 
@@ -121,9 +123,9 @@ do_action( 'ccpt_before_single_article' );
                     <?php endif; ?>
 
                     <div class="article__footer">
-                        <?php if( $category = get_the_terms( get_the_ID(), 'article_category' )[0] ) : ?>
+                        <?php if( $article_category ) : ?>
                             
-                            <a href="<?=get_term_link( $category->term_id ); ?>" class="arrow-button arrow-button--left">
+                            <a href="<?=get_term_link( $article_category->term_id ); ?>" class="arrow-button arrow-button--left">
                                 <div class="arrow-button__icon">
                                     <?=ccpt_get_icon( 'arrow-left/circle' ); ?>
                                     <?=ccpt_get_icon( 'arrow-left/arrow' ); ?>
@@ -142,7 +144,7 @@ do_action( 'ccpt_before_single_article' );
                             ccpt_maybe_add_article_to_readed( get_the_ID() );
 
                             $test_id = ccpt_get_article_category_test( get_the_ID() );
-                            $is_test_available = ccpt_get_user_course_data( 0, ccpt_get_article_category( get_the_ID() )->term_id )['progress'] === 100;
+                            $is_test_available = $article_category ? ccpt_get_user_course_data( 0, $article_category->term_id )['progress'] === 100 : false;
                             
                             if( $test_id ) :
                                 $link = get_permalink( $test_id );
