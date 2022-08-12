@@ -5,6 +5,7 @@ jQuery(document).ready(function($){
         // Generic
         this.maybeStretchSiteContentWrapper()
         this.initMobileHeader()
+        this.initArticlesOrderSelect()
         this.initSidebar()
         this.initPasswordField()
         this.initAccordeon()
@@ -114,6 +115,23 @@ jQuery(document).ready(function($){
             if(!$(e.target).closest('.header, .header-search-results').length){
                 $toggler.removeClass('active')
                 $mobile_header.removeClass('open')
+            }
+        })
+    }
+
+
+    crypto.initArticlesOrderSelect = function(){
+        if(!$('.order-select').length) return
+
+        const $select = $('.order-select')
+
+        $('.order-select').on('click', '.order-select__button', function(){
+            $select.toggleClass('order-select--expanded')
+        })
+
+        $('body').on('click', function(e){
+            if(!$(e.target).closest('.order-select').length){
+                $select.removeClass('order-select--expanded')
             }
         })
     }

@@ -17,7 +17,24 @@ $query = ccpt_get_articles_category_query();
             </div>
 
             <div class="page-header__actions">
-                <div class="sidebar-toggle">
+                <div class="order-select">
+                    <button type="button" class="order-select__button order-select__button--desktop">
+                        <span><?=isset( $_GET['order'] ) ? __( 'За датою публікації', 'ce-crypto' ) : __( 'За послідовністю курсу', 'ce-crypto' ); ?></span>
+                        <?=ccpt_get_icon( 'sort' ); ?>
+                    </button>
+
+                    <button type="button" class="order-select__button order-select__button--mobile">
+                        <span><?=__( 'Сортувати', 'ce-crypto' ); ?></span>
+                        <?=ccpt_get_icon( 'sort' ); ?>
+                    </button>
+
+                    <div class="order-select__options">
+                        <a href="<?=remove_query_arg( 'order' ); ?>" class="order-select__option"><?=__( 'За послідовністю курсу', 'ce-crypto' ); ?></a>
+                        <a href="<?=add_query_arg( 'order', 'DESC' ); ?>" class="order-select__option"><?=__( 'За датою публікації', 'ce-crypto' ); ?></a>
+                    </div>
+                </div>
+
+                <div class="sidebar-toggle page-header__sidebar-toggle">
                     <button type="button" class="sidebar-toggle__button">
                         <span><?=__( 'Фільтр', 'ce-crypto' ); ?></span>
                         <?=ccpt_get_icon( 'filter' ); ?>
