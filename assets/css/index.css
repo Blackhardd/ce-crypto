@@ -2337,12 +2337,14 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 40px;
+    min-width: 180px;
     padding: 0 20px;
     color: #45463F;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 24px;
     text-transform: uppercase;
     white-space: nowrap;
     background-color: #E8E8E8;
@@ -3316,6 +3318,12 @@ a.tag:not(.tag--active):hover {
 
     .donate-intro__item-preview {
         padding: 10px;
+    }
+
+
+    .order-select__button {
+        height: 40px;
+        font-size: 16px;
     }
 
 

@@ -19,7 +19,7 @@ $query = ccpt_get_articles_category_query();
             <div class="page-header__actions">
                 <div class="order-select">
                     <button type="button" class="order-select__button order-select__button--desktop">
-                        <span><?=isset( $_GET['order'] ) ? __( 'За датою публікації', 'ce-crypto' ) : __( 'За послідовністю курсу', 'ce-crypto' ); ?></span>
+                        <span><?=isset( $_GET['order'] ) ? __( 'За датою', 'ce-crypto' ) : __( 'За послідовністю', 'ce-crypto' ); ?></span>
                         <?=ccpt_get_icon( 'sort' ); ?>
                     </button>
 
@@ -29,8 +29,8 @@ $query = ccpt_get_articles_category_query();
                     </button>
 
                     <div class="order-select__options">
-                        <a href="<?=remove_query_arg( 'order' ); ?>" class="order-select__option"><?=__( 'За послідовністю курсу', 'ce-crypto' ); ?></a>
-                        <a href="<?=add_query_arg( 'order', 'DESC' ); ?>" class="order-select__option"><?=__( 'За датою публікації', 'ce-crypto' ); ?></a>
+                        <a href="<?=remove_query_arg( 'order' ); ?>" class="order-select__option"><?=__( 'За послідовністю', 'ce-crypto' ); ?></a>
+                        <a href="<?=add_query_arg( 'order', 'DESC' ); ?>" class="order-select__option"><?=__( 'За датою', 'ce-crypto' ); ?></a>
                     </div>
                 </div>
 
