@@ -77,6 +77,8 @@ get_header();
         $about_title = carbon_get_the_post_meta( 'about_title' );
         $about_title_link = get_permalink( carbon_get_the_post_meta( 'about_title_link' ) );
         $about_content = carbon_get_the_post_meta( 'about_content' );
+        $about_tagline_first = carbon_get_the_post_meta( 'about_tagline_first' );
+        $about_tagline_second = carbon_get_the_post_meta( 'about_tagline_second' );
 
         ?>
 
@@ -98,15 +100,23 @@ get_header();
                     </article>
                 <?php endif; ?>
             </div>
-            <div class="main-about__content main-about-desc">
-                <img class="main-about-desc__bg" src="<?=ccpt_get_image_url( 'spiral.svg' ); ?>">
-                <img class="main-about-desc__bg" src="<?=ccpt_get_image_url( 'spiral.svg' ); ?>">
 
-                <div class="main-about-desc__title title">
-                    <div class="main-about-desc__title-text">Це просто, це цікаво, це весело.</div>
-                    <div class="main-about-desc__title-text">Зрозумiло про свiт криптовалют</div>
+            <?php if( $about_tagline_first || $about_tagline_second ) : ?>
+                <div class="main-about__content main-about-desc">
+                    <img class="main-about-desc__bg" src="<?=ccpt_get_image_url( 'spiral.svg' ); ?>">
+                    <img class="main-about-desc__bg" src="<?=ccpt_get_image_url( 'spiral.svg' ); ?>">
+
+                    <div class="main-about-desc__title title">
+                        <?php if( $about_tagline_first ) : ?>
+                            <div class="main-about-desc__title-text"><?=$about_tagline_first; ?></div>
+                        <?php endif; ?>
+
+                        <?php if( $about_tagline_second ) : ?>
+                            <div class="main-about-desc__title-text"><?=$about_tagline_second; ?></div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
