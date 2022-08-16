@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
     const name_regex = /^[A-Za-zА-ЯҐЄІЇа-яґєії0-9]{3,30}$/
     const full_name_regex = /^[A-Za-zА-ЯҐЄІЇа-яґєії0-9]{3,30} [A-Za-zА-ЯҐЄІЇа-яґєії0-9]{3,30}$/
     const email_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    const password_regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,}$/
+    const password_regex = /^[A-Za-z\d!@#$%^&*()]{6,22}$/
     const twitter_regex = /^@?(\w){1,15}$/
     const telegram_regex = /^(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*.*/
 
