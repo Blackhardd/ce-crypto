@@ -63,11 +63,11 @@ $query = ccpt_get_articles_category_query();
                 <?php endif; ?>
 
                 <?php if( $query->max_num_pages > 1 ) : ?>
-                    <?php $current_page = isset( $_GET['page'] ) ? $_GET['page'] : 1; ?>
+                    <?php $current_page = max( 1, get_query_var( 'paged' ) ); ?>
 
                     <div class="pagination">
                         <?php if( $current_page > 1 ) : ?>
-                            <a href="<?=ccpt_add_pagination_query_params( $current_page - 1, $current_url ); ?>" class="arrow-button arrow-button--left pagination__prev">
+                            <a href="<?=get_pagenum_link( $current_page - 1 ); ?>" class="arrow-button arrow-button--left pagination__prev">
                                 <div class="arrow-button__icon">
                                     <?=ccpt_get_icon( 'arrow-left/circle' ); ?>
                                     <?=ccpt_get_icon( 'arrow-left/arrow' ); ?>
@@ -79,8 +79,8 @@ $query = ccpt_get_articles_category_query();
                             <?php for( $index = 1; $index <= $query->max_num_pages; $index++ ) : ?>
                                 <?php
                                     
-                                $is_active = ( !isset( $_GET['page'] ) && $index === 1 ) || ( isset( $_GET['page'] ) && $_GET['page'] == $index );
-                                $link = ccpt_add_pagination_query_params( $index, $current_url );
+                                $is_active = $current_page == $index;
+                                $link = get_pagenum_link( $index );
                                 
                                 ?>
 
@@ -89,7 +89,7 @@ $query = ccpt_get_articles_category_query();
                         </div>
 
                         <?php if( $current_page < $query->max_num_pages ) : ?>
-                            <a href="<?=ccpt_add_pagination_query_params( $current_page + 1, $current_url ); ?>" class="arrow-button arrow-button--right pagination__next">
+                            <a href="<?=get_pagenum_link( $current_page + 1 ); ?>" class="arrow-button arrow-button--right pagination__next">
                                 <div class="arrow-button__icon">
                                     <?=ccpt_get_icon( 'arrow-right/arrow' ); ?>
                                     <?=ccpt_get_icon( 'arrow-right/circle' ); ?>
